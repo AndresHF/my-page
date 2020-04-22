@@ -3,8 +3,9 @@
 // (But you could use ES2015 features supported by your Node.js version)
 
 const debug = process.env.NODE_ENV !== "production";
+const withSass = require("@zeit/next-sass");
 
-module.exports = {
+module.exports = withSass({
   exportPathMap: function () {
     return {
       "/": { page: "/" },
@@ -33,4 +34,4 @@ module.exports = {
     // Important: return the modified config
     return config
   }, */,
-};
+});

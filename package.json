@@ -10,7 +10,9 @@
     "deploy": "@powershell rimraf out && next build && next export && fsutil file createnew out/.nojekyll 0 && gh-pages -d out -t true"
   },
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "next": "latest",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

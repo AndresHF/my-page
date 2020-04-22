@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Roboto-Regular";
+}
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  min-height: 100vh;
+  & > .container {
+    @extend .paragraph-m;
+    width: 100rem;
+  }
+}
+
+footer,
+header {
+  @extend .paragraph-m;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 5rem;
+  background-color: pink;
+  & > div {
+    margin-right: 3rem;
+  }
+}
