@@ -1,6 +1,6 @@
 {
-  "name": "gh-pages",
-  "author": "thierryc",
+  "name": "my-page",
+  "author": "AndresHF",
   "version": "1.0.2",
   "scripts": {
     "dev": "next",
