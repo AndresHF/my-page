@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Footer from "./Footer";
 import Header from "./Header";
+import { ReactNodeLike } from "prop-types";
 
 type LayoutProps = {
   title: string;
+  background?: ReactNodeLike;
 };
 
-const Layout: React.FC<LayoutProps> = ({ title, children }) => {
+const Layout: React.FC<LayoutProps> = ({ title, background, children }) => {
   return (
     <>
       <Head>
@@ -15,6 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ title, children }) => {
       </Head>
       <Header route="home" />
       <main>
+        {background}
         <div className="container">{children}</div>
       </main>
       <Footer />
