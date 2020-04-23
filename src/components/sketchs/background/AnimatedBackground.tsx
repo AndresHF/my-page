@@ -1,6 +1,4 @@
 import loadable from "@loadable/component";
-// import * as p5 from "p5";
-import Particle, { getParticles } from "./particle";
 import ParticleSystem from "./particleSystem";
 
 type AnimatedBackgroundProps = {};

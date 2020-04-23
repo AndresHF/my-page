@@ -13,7 +13,6 @@ const Home: React.FC<HomeProps> = ({}) => {
   }, []);
 
   if (loading) return null;
-  console.log("WINDOW", window);
   return (
     <div>
       <Layout title="home" background={<AnimatedBackground />}>
