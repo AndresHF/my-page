@@ -35,8 +35,11 @@ header {
   justify-content: flex-end;
   align-items: center;
   height: 5rem;
-  background-color: pink;
+  background-color: $white-broken;
   & > div {
     margin-right: 3rem;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
   }
 }

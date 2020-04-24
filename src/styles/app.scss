@@ -1,3 +1,6 @@
+/*PALLETE*/
+@import "base/pallete";
+
 /*TYPOGRAPHY*/
 @import "typography/fonts";
 @import "typography/typography";
@@ -7,3 +10,7 @@
 
 /* P5 */
 @import "p5/p5";
+
+/* COMPONENTS */
+@import "components/skill";
+@import "components/inputs";

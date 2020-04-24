@@ -1,0 +1,54 @@
+@mixin dimension {
+  width: 30rem;
+  height: 35rem;
+  border-radius: 4px;
+}
+
+@mixin faceStyle($deg) {
+  transform: perspective(600px) rotateY($deg);
+  transition: transform 0.55s linear;
+  backface-visibility: hidden;
+  position: absolute;
+  background-color: $white-broken;
+}
+
+.card {
+  @include dimension;
+  position: relative;
+
+  &__skill {
+    @extend .card;
+    &--picture {
+      width: 30rem;
+      height: 15rem;
+      border-radius: 4px 4px 0 0;
+    }
+
+    &--container {
+      @include dimension;
+      position: relative;
+      margin-top: 4rem;
+      font-size: 45px;
+      cursor: pointer;
+    }
+  }
+}
+
+.front {
+  @include dimension;
+  @include faceStyle(0deg);
+  &--flipped {
+    @extend .front;
+    @include faceStyle(-180deg);
+  }
+}
+
+.back {
+  @include dimension;
+  @include faceStyle(180deg);
+  color: black;
+  &--flipped {
+    @extend .back;
+    @include faceStyle(0deg);
+  }
+}

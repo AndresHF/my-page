@@ -1,0 +1,29 @@
+@mixin commonStyles {
+  @extend .paragraph-m;
+  padding: 0.1rem;
+  border-radius: 4px;
+  min-width: 15rem;
+  min-height: 3rem;
+  border: 1px solid $primary-blue;
+  background-color: $primary-blue-light;
+  color: $primary-blue;
+  cursor: pointer;
+  &:focus {
+    outline: 0;
+  }
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: $primary-blue-lighter;
+    color: $primary-dark;
+  }
+}
+
+button {
+  @include commonStyles;
+}
+
+input {
+  @include commonStyles;
+  padding-left: 2rem;
+  max-width: 10rem;
+}
