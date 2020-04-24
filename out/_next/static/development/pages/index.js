@@ -1807,6 +1807,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/styles/app.scss */ "./src/styles/app.scss");
 /* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _src_components_sketchs_background_AnimatedBackground__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/sketchs/background/AnimatedBackground */ "./src/components/sketchs/background/AnimatedBackground.tsx");
+/* harmony import */ var _src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/cards/cardCongif */ "./src/components/cards/cardCongif.ts");
+/* harmony import */ var _src_components_cards_CardContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/components/cards/CardContainer */ "./src/components/cards/CardContainer.tsx");
 
 
 var _this = undefined,
@@ -1818,6 +1820,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
+
+var SKILL_CARDS = [_src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_5__["REACT_CARD_CONFIG"]];
 
 var Home = function Home(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
@@ -1834,7 +1839,7 @@ var Home = function Home(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 21,
       columnNumber: 5
     }
   }, __jsx(_src_components_UI_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1843,17 +1848,25 @@ var Home = function Home(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18,
+        lineNumber: 22,
         columnNumber: 40
       }
     }),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 22,
       columnNumber: 7
     }
-  }, "HOOOOOLAAA"));
+  }, __jsx(_src_components_cards_CardContainer__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    cards: SKILL_CARDS,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 9
+    }
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -1910,29 +1923,109 @@ var Footer = function Footer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _hooks_useParticles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
 var _this = undefined,
     _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\UI\\Header.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
+
 var Header = function Header(_ref) {
   var route = _ref.route;
+
+  var _useParticles = Object(_hooks_useParticles__WEBPACK_IMPORTED_MODULE_1__["useParticles"])(),
+      dispatch = _useParticles.dispatch,
+      collision = _useParticles.collision,
+      collider = _useParticles.collider;
+
   return __jsx("header", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7,
+      lineNumber: 11,
       columnNumber: 5
     }
   }, __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8,
+      lineNumber: 12,
       columnNumber: 7
     }
-  }, "HEADER AT ".concat(route)));
+  }, __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_COLLIDER",
+        value: !collider
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 9
+    }
+  }, "".concat(collider ? "Remove " : "Use", " collider")), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_COLLISION",
+        value: !collision
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
+  }, "".concat(collision ? "Disable " : "Enable", " collision")), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_PARTICLES_AMOUNT",
+        value: 0
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 9
+    }
+  }, "Remove particles"), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_PARTICLES_AMOUNT",
+        value: 6
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 9
+    }
+  }, "Reset"), __jsx("input", {
+    type: "number",
+    max: 100,
+    placeholder: "N. particles (80)",
+    onChange: function onChange(e) {
+      var val = parseInt(e.target.value);
+
+      if (!isNaN(val)) {
+        dispatch({
+          type: "SET_PARTICLES_AMOUNT",
+          value: val > 80 ? 80 : val
+        });
+      }
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 9
+    }
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -1954,6 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer */ "./src/components/UI/Footer.tsx");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./src/components/UI/Header.tsx");
+/* harmony import */ var _hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
 var _this = undefined,
     _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\UI\\Layout.tsx";
 
@@ -1963,22 +2057,30 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 var Layout = function Layout(_ref) {
   var title = _ref.title,
       background = _ref.background,
       children = _ref.children;
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  return __jsx(_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__["ParticlesProvider"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14,
+      columnNumber: 5
+    }
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 16,
       columnNumber: 9
     }
   }, title), __jsx("link", {
@@ -1987,7 +2089,7 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 17,
       columnNumber: 9
     }
   })), __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1995,14 +2097,14 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 19,
       columnNumber: 7
     }
   }), __jsx("main", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 20,
       columnNumber: 7
     }
   }, background, __jsx("div", {
@@ -2010,20 +2112,168 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 22,
       columnNumber: 9
     }
   }, children)), __jsx(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 24,
       columnNumber: 7
     }
   }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
+
+/***/ }),
+
+/***/ "./src/components/UI/hooks/useParticles.tsx":
+/*!**************************************************!*\
+  !*** ./src/components/UI/hooks/useParticles.tsx ***!
+  \**************************************************/
+/*! exports provided: INITIAL_ACTIVE_KEY, particlesReducer, ParticlesProvider, useParticles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INITIAL_ACTIVE_KEY", function() { return INITIAL_ACTIVE_KEY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "particlesReducer", function() { return particlesReducer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParticlesProvider", function() { return ParticlesProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useParticles", function() { return useParticles; });
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\UI\\hooks\\useParticles.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+var INITIAL_ACTIVE_KEY = "buildingList";
+var particlesInitialState = {
+  particlesAmount: 6,
+  target: undefined,
+  collision: true,
+  collider: false
+};
+var particlesReducer = function particlesReducer(state, action) {
+  switch (action.type) {
+    case "SET_PARTICLES_AMOUNT":
+      return _objectSpread({}, state, {
+        particlesAmount: action.value
+      });
+
+    case "SET_TARGET":
+      return _objectSpread({}, state, {
+        target: action.value
+      });
+
+    case "SET_COLLISION":
+      return _objectSpread({}, state, {
+        collision: action.value
+      });
+
+    case "SET_COLLIDER":
+      return _objectSpread({}, state, {
+        collider: action.value
+      });
+
+    default:
+      return state;
+  }
+};
+var ParticlesContext = react__WEBPACK_IMPORTED_MODULE_1___default.a.createContext({
+  state: particlesInitialState,
+  dispatch: function dispatch(action) {}
+});
+var ParticlesProvider = function ParticlesProvider(_ref) {
+  var children = _ref.children;
+
+  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(particlesReducer, particlesInitialState),
+      state = _useReducer[0],
+      dispatch = _useReducer[1];
+
+  return __jsx(ParticlesContext.Provider, {
+    value: {
+      state: state,
+      dispatch: dispatch
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 53,
+      columnNumber: 5
+    }
+  }, children);
+};
+var useParticles = function useParticles() {
+  var _useContext = Object(react__WEBPACK_IMPORTED_MODULE_1__["useContext"])(ParticlesContext),
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  return _objectSpread({}, state, {
+    dispatch: dispatch
+  });
+};
+
+/***/ }),
+
+/***/ "./src/components/cards/CardContainer.tsx":
+/*!************************************************!*\
+  !*** ./src/components/cards/CardContainer.tsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\cards\\CardContainer.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var CardContainer = function CardContainer(_ref) {
+  var cards = _ref.cards;
+  return __jsx("div", {
+    className: "card__skill--container",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 5
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CardContainer);
+
+/***/ }),
+
+/***/ "./src/components/cards/cardCongif.ts":
+/*!********************************************!*\
+  !*** ./src/components/cards/cardCongif.ts ***!
+  \********************************************/
+/*! exports provided: REACT_CARD_CONFIG */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REACT_CARD_CONFIG", function() { return REACT_CARD_CONFIG; });
+var REACT_CARD_CONFIG = {
+  picture: "/pictures/react.png",
+  skills: ["bla", "ble", "bli"]
+};
 
 /***/ }),
 
@@ -2041,6 +2291,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @loadable/component */ "./node_modules/@loadable/component/dist/loadable.esm.js");
 /* harmony import */ var _particleSystem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./particleSystem */ "./src/components/sketchs/background/particleSystem.ts");
+/* harmony import */ var _UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
+/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/background/particle.ts");
 
 
 var _this = undefined,
@@ -2051,22 +2303,42 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
+
 var AnimatedBackground = function AnimatedBackground(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
 
   var particleSystem;
 
+  var _useParticles = Object(_UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__["useParticles"])(),
+      particlesAmount = _useParticles.particlesAmount,
+      collision = _useParticles.collision,
+      collider = _useParticles.collider;
+
   var setup = function setup(p5, canvasParentRef) {
-    p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
+    p5.createCanvas(window.innerWidth, window.innerHeight, p5.WEBGL).parent(canvasParentRef);
     p5.strokeWeight(0.5);
-    particleSystem = new _particleSystem__WEBPACK_IMPORTED_MODULE_3__["default"](p5);
+    particleSystem = new _particleSystem__WEBPACK_IMPORTED_MODULE_3__["default"](p5, {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    });
+    particleSystem.setParticles(particlesAmount);
+    particleSystem.collision = collision;
+    p5.pointLight(255, 255, 255, p5.width / 2, p5.height / 2, 1000);
+    if (collider) particleSystem.collider = new _particle__WEBPACK_IMPORTED_MODULE_5__["default"]({
+      width: 40,
+      height: 40
+    }, p5, {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    }, "black");
   };
 
   var draw = function draw(p5) {
     p5.background(255, 100, 255, 0);
     p5.clear();
     p5.noStroke();
-    particleSystem.update(p5);
+    particleSystem.update();
   };
 
   if (false) {}
@@ -2078,7 +2350,7 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25,
+      lineNumber: 43,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -2087,7 +2359,7 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26,
+      lineNumber: 44,
       columnNumber: 7
     }
   }), ";");
@@ -2101,45 +2373,24 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
 /*!*******************************************************!*\
   !*** ./src/components/sketchs/background/particle.ts ***!
   \*******************************************************/
-/*! exports provided: getParticles, default */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getParticles", function() { return getParticles; });
 /* harmony import */ var _babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/background/utils.ts");
 
 
 
 
-var ACC_RATE = 0.1;
 
-var checkPos = function checkPos(pos, mouse, acceleration) {
-  if (pos <= mouse) return acceleration + ACC_RATE;
-  if (pos >= mouse) return acceleration - ACC_RATE;
-  return 0;
-};
-
-var getParticles = function getParticles(particlesAmount, radius, p5) {
-  var particles = new Array(particlesAmount);
-
-  for (var i = 0; i < particlesAmount; i++) {
-    particles[i] = new Particle({
-      width: radius,
-      height: radius
-    }, p5);
-    colors.pop();
-  }
-
-  return particles;
-};
-var colors = ["red", "green", "blue", "yellow", "orange"];
 
 var Particle = /*#__PURE__*/function () {
-  function Particle(dimension, p5) {
+  function Particle(dimension, p5, offset, color, velocity) {
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Particle);
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "dimension", void 0);
@@ -2156,13 +2407,31 @@ var Particle = /*#__PURE__*/function () {
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "color", void 0);
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "accLimit", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "velLimit", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "offset", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "collided", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "collidedCount", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "smallCollision", void 0);
+
     this.dimension = dimension;
     this.p5 = p5;
     this.acceleration = this.p5.createVector();
-    this.velocity = this.p5.createVector();
-    this.position = this.p5.createVector(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
+    this.velocity = velocity ? velocity : this.p5.createVector();
+    this.position = this.p5.createVector(Math.random() * window.innerWidth - window.innerWidth / 2, Math.random() * window.innerHeight - window.innerHeight / 2);
+    this.accLimit = Math.random() * 2;
+    this.velLimit = 3.5;
     this.tail = [];
-    this.color = colors[colors.length - 1] || "black";
+    this.color = color;
+    this.offset = offset;
+    this.collided = false;
+    this.smallCollision = false;
+    this.collidedCount = 0;
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Particle, [{
@@ -2171,12 +2440,32 @@ var Particle = /*#__PURE__*/function () {
       var _this$position = this.position,
           x = _this$position.x,
           y = _this$position.y;
-      this.acceleration = this.p5.createVector(checkPos(x, mouseX, this.acceleration.x), checkPos(y, mouseY, this.acceleration.y));
-      this.acceleration.limit(0.08);
+      this.acceleration = this.p5.createVector(Object(_utils__WEBPACK_IMPORTED_MODULE_4__["checkPos"])(x, mouseX - this.offset.x, this.acceleration.x), Object(_utils__WEBPACK_IMPORTED_MODULE_4__["checkPos"])(y, mouseY - this.offset.y, this.acceleration.y));
+      this.acceleration.limit(this.accLimit);
+      this.acceleration.setMag(this.collided ? -2 : this.smallCollision ? -0.01 : 0.2);
       this.velocity.add(this.acceleration);
-      this.velocity.limit(3);
+      this.velocity.limit(this.collided ? 10 : this.smallCollision ? 5 : this.velLimit);
       this.position.add(this.velocity);
-      if (this.tail.length > 8) this.tail = this.tail.slice(0, -1);else this.tail = [this.position.copy()].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(this.tail));
+      if (this.tail.length > 4) this.tail = this.tail.slice(0, -1);else this.tail = [this.position.copy()].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(this.tail));
+      (this.collided || this.smallCollision) && this.collidedCount++;
+
+      if (this.collidedCount >= (this.smallCollision ? 15 : 80)) {
+        this.collided = false;
+        this.smallCollision = false;
+        this.collidedCount = 0;
+      }
+    }
+  }, {
+    key: "drawCollider",
+    value: function drawCollider(mouseX, mouseY, image) {
+      var millis = this.p5.millis();
+      this.p5.pointLight(255, 255, 255, 0, 0, 10000);
+      this.p5.texture(image);
+      this.p5.push();
+      this.p5.translate(mouseX - this.offset.x, mouseY - this.offset.y, 0);
+      this.p5.rotateY(millis / 1000);
+      this.p5.sphere(40, 24, 24);
+      this.p5.pop();
     }
   }, {
     key: "draw",
@@ -2213,7 +2502,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/background/particle.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/background/utils.ts");
 
 
 
@@ -2221,25 +2510,62 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ParticleSystem = /*#__PURE__*/function () {
-  function ParticleSystem(p5) {
+  function ParticleSystem(p5, offset) {
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ParticleSystem);
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "particles", void 0);
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "collision", void 0);
+
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "p5", void 0);
 
-    this.particles = Object(_particle__WEBPACK_IMPORTED_MODULE_4__["getParticles"])(6, 10, p5);
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "collider", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "image", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__["default"])(this, "offset", void 0);
+
+    this.particles = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getParticles"])(6, 7, p5, offset);
     this.p5 = p5;
+    this.collision = true;
+    this.image = p5.loadImage("../../../pictures/meFace.png");
+    this.offset = offset;
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(ParticleSystem, [{
+    key: "setParticles",
+    value: function setParticles(amount) {
+      var diff = amount - this.particles.length;
+
+      if (diff > 0) {
+        this.particles = [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(this.particles), Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getParticles"])(diff, 7, this.p5, this.offset)));
+      } else if (diff < 0) {
+        this.particles = this.particles.slice(0, diff);
+      }
+    }
+  }, {
     key: "checkColision",
-    value: function checkColision(particleA, particleB) {
-      var distance = particleA.position.dist(particleB.position);
-      var collided = distance < particleA.dimension.width;
+    value: function checkColision(particleA, particleB, mousePosition) {
+      var distance;
+
+      if (mousePosition) {
+        var x = mousePosition.x,
+            y = mousePosition.y;
+        var realParticlePos = this.p5.createVector(particleA.position.x + this.offset.x, particleA.position.y + this.offset.y);
+        var mousePos = this.p5.createVector(x, y);
+        distance = realParticlePos.dist(mousePos) / 6;
+      } else {
+        distance = particleA.position.dist(particleB.position);
+      }
+
+      var collided = !particleA.collided && distance <= particleA.dimension.width;
 
       if (collided) {
-        particleA.velocity = this.p5.createVector(particleA.velocity.x * -Math.random() * 10 - particleB.velocity.x, particleA.velocity.y * -Math.random() * 10 - particleB.velocity.y);
+        Object(_utils__WEBPACK_IMPORTED_MODULE_4__["switchVelocity"])(particleA, particleB, this.p5);
+        !this.collider && Object(_utils__WEBPACK_IMPORTED_MODULE_4__["switchVelocity"])(particleB, particleA, this.p5);
+        particleA.collided = !!this.collider;
+        particleA.smallCollision = !this.collider;
+        particleB.smallCollision = !this.collider;
       }
     }
   }, {
@@ -2247,14 +2573,27 @@ var ParticleSystem = /*#__PURE__*/function () {
     value: function update() {
       var _this = this;
 
+      var _this$p = this.p5,
+          mouseX = _this$p.mouseX,
+          mouseY = _this$p.mouseY;
       this.particles.map(function (particle, i) {
-        particle.update(_this.p5.mouseX, _this.p5.mouseY);
+        particle.update(mouseX, mouseY);
         var otherParticles = [].concat(Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_this.particles.slice(0, i)), Object(_babel_runtime_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_this.particles.slice(i + 1, _this.particles.length)));
-        otherParticles.map(function (other) {
-          return _this.checkColision(particle, other);
-        });
+
+        if (_this.collider) {
+          _this.checkColision(particle, _this.collider, {
+            x: mouseX,
+            y: mouseY
+          });
+        } else {
+          !!_this.collision && otherParticles.map(function (other) {
+            return _this.checkColision(particle, other);
+          });
+        }
+
         particle.draw();
       });
+      !!this.collider && this.collider.drawCollider(mouseX, mouseY, this.image);
     }
   }]);
 
@@ -2265,7 +2604,48 @@ var ParticleSystem = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 2:
+/***/ "./src/components/sketchs/background/utils.ts":
+/*!****************************************************!*\
+  !*** ./src/components/sketchs/background/utils.ts ***!
+  \****************************************************/
+/*! exports provided: switchVelocity, ACC_RATE, checkPos, getParticles, colors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "switchVelocity", function() { return switchVelocity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ACC_RATE", function() { return ACC_RATE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkPos", function() { return checkPos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getParticles", function() { return getParticles; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
+/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/background/particle.ts");
+
+var switchVelocity = function switchVelocity(particleA, particleB, p5) {
+  particleA.velocity = p5.createVector(particleA.velocity.x * -Math.random() * 30 - particleB.velocity.x, particleA.velocity.y * -Math.random() * 30 - particleB.velocity.y);
+};
+var ACC_RATE = 0.1;
+var checkPos = function checkPos(pos, mouse, acceleration) {
+  if (pos <= mouse) return acceleration + ACC_RATE;
+  if (pos >= mouse) return acceleration - ACC_RATE;
+  return 0;
+};
+var getParticles = function getParticles(particlesAmount, radius, p5, offset) {
+  var particles = new Array(particlesAmount);
+
+  for (var i = 0; i < particlesAmount; i++) {
+    particles[i] = new _particle__WEBPACK_IMPORTED_MODULE_0__["default"]({
+      width: radius,
+      height: radius
+    }, p5, offset, colors[i % colors.length]);
+  }
+
+  return particles;
+};
+var colors = ["red", "green", "blue", "purple", "orange", "goldenrod", "limegreen", "teal", "pink", "brown", "indigo", "cyan", "crismon", "darkred", "darkorange", "gold", "darkgreen", "paleturquoise", "darkcyan", "mediumblue", "mediumorchid", "lightslategray", "sienna"];
+
+/***/ }),
+
+/***/ 1:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Candre%5Cprojects%5Cmy-page%5Cpages%5Cindex.tsx ***!
   \******************************************************************************************************************************/
@@ -2288,5 +2668,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
