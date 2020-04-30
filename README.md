@@ -1,3 +1,3 @@
 # my-page
 
-<h3><a href="andreshf.github.io/my-page">andreshf.github.io/my-page</a></h3>
+<h3><a href="https://andreshf.github.io/my-page/">Visit link to explore what Im doing.</a></h3>
