@@ -25,12 +25,12 @@
   src: url(/fonts/Roboto-Bold.ttf); }
 
 .paragraph, .paragraph-s, .paragraph-m, main > .container, footer,
-header, button, input, .paragraph-l, .paragraph-xl {
+header, button, select, input, .paragraph-l, .paragraph-xl {
   font-family: "Roboto-Regular"; }
   .paragraph-s {
     font-size: 1.4rem; }
   .paragraph-m, main > .container, footer,
-  header, button, input {
+  header, button, select, input {
     font-size: 1.6rem; }
   .paragraph-l {
     font-size: 2rem; }
@@ -77,11 +77,26 @@ header {
     justify-content: space-between;
     width: 50%; }
 
+.header__container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; }
+
 /* P5 */
-.sketchContainer {
+.sketch__container {
   position: absolute;
   top: 1;
   left: 0; }
+
+.sketch__picker--container {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 30rem; }
+
+.controlPanel {
+  display: flex;
+  justify-content: center;
+  min-width: 1000px; }
 
 /* COMPONENTS */
 .card, .card__skill {
@@ -135,7 +150,7 @@ header {
     position: absolute;
     background-color: #f8f8f8f5; }
 
-button {
+button, select {
   padding: 0.1rem;
   border-radius: 4px;
   min-width: 15rem;
@@ -145,9 +160,9 @@ button {
   color: #6083b4;
   cursor: pointer;
   transition: all 0.5s ease; }
-  button:focus {
+  button:focus, select:focus {
     outline: 0; }
-  button:hover {
+  button:hover, select:hover {
     background-color: #d5e5ff;
     color: #4d6a94; }
 
