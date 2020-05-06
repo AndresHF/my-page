@@ -1806,9 +1806,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_components_UI_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/components/UI/Layout */ "./src/components/UI/Layout.tsx");
 /* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/styles/app.scss */ "./src/styles/app.scss");
 /* harmony import */ var _src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_src_styles_app_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _src_components_sketchs_background_AnimatedBackground__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/sketchs/background/AnimatedBackground */ "./src/components/sketchs/background/AnimatedBackground.tsx");
-/* harmony import */ var _src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/cards/cardCongif */ "./src/components/cards/cardCongif.ts");
-/* harmony import */ var _src_components_cards_CardContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/components/cards/CardContainer */ "./src/components/cards/CardContainer.tsx");
+/* harmony import */ var _src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/cards/cardCongif */ "./src/components/cards/cardCongif.ts");
+/* harmony import */ var _src_components_sketchs_matrixRain_MatrixRainContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/sketchs/matrixRain/MatrixRainContainer */ "./src/components/sketchs/matrixRain/MatrixRainContainer.tsx");
+/* harmony import */ var _src_components_sketchs_particles_ParticlesContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../src/components/sketchs/particles/ParticlesContainer */ "./src/components/sketchs/particles/ParticlesContainer.tsx");
+/* harmony import */ var _src_components_sketchs_SketchPicker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../src/components/sketchs/SketchPicker */ "./src/components/sketchs/SketchPicker.tsx");
+/* harmony import */ var _src_components_sketchs_particles_ParticlesControlPanel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../src/components/sketchs/particles/ParticlesControlPanel */ "./src/components/sketchs/particles/ParticlesControlPanel.tsx");
 
 
 var _this = undefined,
@@ -1822,7 +1824,43 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-var SKILL_CARDS = [_src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_5__["REACT_CARD_CONFIG"]];
+
+
+var SKILL_CARDS = [_src_components_cards_cardCongif__WEBPACK_IMPORTED_MODULE_4__["REACT_CARD_CONFIG"]];
+
+var switchBackground = function switchBackground(state) {
+  switch (state) {
+    case "MATRIX":
+      return __jsx(_src_components_sketchs_matrixRain_MatrixRainContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 21,
+          columnNumber: 14
+        }
+      });
+
+    case "PARTICLES":
+      return __jsx(_src_components_sketchs_particles_ParticlesContainer__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23,
+          columnNumber: 14
+        }
+      });
+
+    default:
+      return __jsx(_src_components_sketchs_matrixRain_MatrixRainContainer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        __self: _this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25,
+          columnNumber: 14
+        }
+      });
+  }
+};
 
 var Home = function Home(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
@@ -1831,42 +1869,58 @@ var Home = function Home(_ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("MATRIX"),
+      backgroundState = _useState2[0],
+      setBackgroundState = _useState2[1];
+
   Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
     setLoading(false);
   }, []);
-  if (loading) return null;
+  if (loading) return null; //<ParticlesContainer />
+
   return __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21,
+      lineNumber: 40,
       columnNumber: 5
     }
   }, __jsx(_src_components_UI_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: "home",
-    background: __jsx(_src_components_sketchs_background_AnimatedBackground__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    background: switchBackground(backgroundState),
+    header: __jsx("div", {
+      className: "header__container",
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22,
-        columnNumber: 40
+        lineNumber: 45,
+        columnNumber: 11
       }
-    }),
+    }, backgroundState === "PARTICLES" && __jsx(_src_components_sketchs_particles_ParticlesControlPanel__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 47,
+        columnNumber: 15
+      }
+    }), __jsx(_src_components_sketchs_SketchPicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      onChange: function onChange(background) {
+        return setBackgroundState(background);
+      },
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49,
+        columnNumber: 13
+      }
+    })),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 41,
       columnNumber: 7
     }
-  }, __jsx(_src_components_cards_CardContainer__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    cards: SKILL_CARDS,
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 9
-    }
-  })));
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -1890,22 +1944,23 @@ var _this = undefined,
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-var Footer = function Footer() {
+var Footer = function Footer(_ref) {
+  var children = _ref.children;
   return __jsx("footer", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 3,
+      lineNumber: 5,
       columnNumber: 5
     }
-  }, __jsx("div", {
+  }, children && children || __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 4,
-      columnNumber: 7
+      lineNumber: 7,
+      columnNumber: 9
     }
-  }, "FOOTER"));
+  }, "Default Footer"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -1923,22 +1978,15 @@ var Footer = function Footer() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_useParticles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
 var _this = undefined,
     _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\UI\\Header.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-
 var Header = function Header(_ref) {
-  var route = _ref.route;
-
-  var _useParticles = Object(_hooks_useParticles__WEBPACK_IMPORTED_MODULE_1__["useParticles"])(),
-      dispatch = _useParticles.dispatch,
-      collision = _useParticles.collision,
-      collider = _useParticles.collider;
-
+  var route = _ref.route,
+      children = _ref.children;
   return __jsx("header", {
     __self: _this,
     __source: {
@@ -1946,86 +1994,14 @@ var Header = function Header(_ref) {
       lineNumber: 11,
       columnNumber: 5
     }
-  }, __jsx("div", {
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12,
-      columnNumber: 7
-    }
-  }, __jsx("button", {
-    onClick: function onClick() {
-      return dispatch({
-        type: "SET_COLLIDER",
-        value: !collider
-      });
-    },
+  }, children && children || __jsx("div", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13,
       columnNumber: 9
     }
-  }, "".concat(collider ? "Remove " : "Use", " collider")), __jsx("button", {
-    onClick: function onClick() {
-      return dispatch({
-        type: "SET_COLLISION",
-        value: !collision
-      });
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 18,
-      columnNumber: 9
-    }
-  }, "".concat(collision ? "Disable " : "Enable", " collision")), __jsx("button", {
-    onClick: function onClick() {
-      return dispatch({
-        type: "SET_PARTICLES_AMOUNT",
-        value: 0
-      });
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23,
-      columnNumber: 9
-    }
-  }, "Remove particles"), __jsx("button", {
-    onClick: function onClick() {
-      return dispatch({
-        type: "SET_PARTICLES_AMOUNT",
-        value: 6
-      });
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 28,
-      columnNumber: 9
-    }
-  }, "Reset"), __jsx("input", {
-    type: "number",
-    max: 100,
-    placeholder: "N. particles (80)",
-    onChange: function onChange(e) {
-      var val = parseInt(e.target.value);
-
-      if (!isNaN(val)) {
-        dispatch({
-          type: "SET_PARTICLES_AMOUNT",
-          value: val > 80 ? 80 : val
-        });
-      }
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33,
-      columnNumber: 9
-    }
-  })));
+  }, "Default Header"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -2061,50 +2037,60 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var Layout = function Layout(_ref) {
   var title = _ref.title,
       background = _ref.background,
+      header = _ref.header,
+      disableHeader = _ref.disableHeader,
       children = _ref.children;
   return __jsx(_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__["ParticlesProvider"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 17,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 18,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 19,
       columnNumber: 9
     }
   }, title), __jsx("link", {
     rel: "icon",
-    href: "/icons/codeNinja.ico",
+    href: "".concat("", "/icons/codeNinja.ico"),
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 20,
       columnNumber: 9
     }
-  })), __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  })), !disableHeader && header ? __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     route: "home",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 23,
+      columnNumber: 9
+    }
+  }, header) : __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    route: "home",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27,
       columnNumber: 7
     }
   }), __jsx("main", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 29,
       columnNumber: 7
     }
   }, background, __jsx("div", {
@@ -2112,14 +2098,14 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 31,
       columnNumber: 9
     }
   }, children)), __jsx(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24,
+      lineNumber: 33,
       columnNumber: 7
     }
   }));
@@ -2226,40 +2212,6 @@ var useParticles = function useParticles() {
 
 /***/ }),
 
-/***/ "./src/components/cards/CardContainer.tsx":
-/*!************************************************!*\
-  !*** ./src/components/cards/CardContainer.tsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined,
-    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\cards\\CardContainer.tsx";
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-var CardContainer = function CardContainer(_ref) {
-  var cards = _ref.cards;
-  return __jsx("div", {
-    className: "card__skill--container",
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11,
-      columnNumber: 5
-    }
-  });
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (CardContainer);
-
-/***/ }),
-
 /***/ "./src/components/cards/cardCongif.ts":
 /*!********************************************!*\
   !*** ./src/components/cards/cardCongif.ts ***!
@@ -2277,10 +2229,69 @@ var REACT_CARD_CONFIG = {
 
 /***/ }),
 
-/***/ "./src/components/sketchs/background/AnimatedBackground.tsx":
-/*!******************************************************************!*\
-  !*** ./src/components/sketchs/background/AnimatedBackground.tsx ***!
-  \******************************************************************/
+/***/ "./src/components/sketchs/SketchPicker.tsx":
+/*!*************************************************!*\
+  !*** ./src/components/sketchs/SketchPicker.tsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_strings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/strings */ "./src/utils/strings.ts");
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\sketchs\\SketchPicker.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+var SKETCHES = ["MATRIX", "PARTICLES"];
+
+var SketchPicker = function SketchPicker(_ref) {
+  var _onChange = _ref.onChange;
+  return __jsx("div", {
+    className: "sketch__picker--container",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
+  }, __jsx("select", {
+    onChange: function onChange(e) {
+      return _onChange(e.target.value);
+    },
+    className: "sketch__picker",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 13
+    }
+  }, SKETCHES.map(function (sketch) {
+    return __jsx("option", {
+      key: sketch,
+      value: sketch,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18,
+        columnNumber: 21
+      }
+    }, Object(_utils_strings__WEBPACK_IMPORTED_MODULE_1__["capitalize"])(sketch));
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SketchPicker);
+
+/***/ }),
+
+/***/ "./src/components/sketchs/matrixRain/MatrixRainContainer.tsx":
+/*!*******************************************************************!*\
+  !*** ./src/components/sketchs/matrixRain/MatrixRainContainer.tsx ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2290,13 +2301,214 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @loadable/component */ "./node_modules/@loadable/component/dist/loadable.esm.js");
-/* harmony import */ var _particleSystem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./particleSystem */ "./src/components/sketchs/background/particleSystem.ts");
-/* harmony import */ var _UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
-/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/background/particle.ts");
+/* harmony import */ var _symbol__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./symbol */ "./src/components/sketchs/matrixRain/symbol.ts");
 
 
 var _this = undefined,
-    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\sketchs\\background\\AnimatedBackground.tsx";
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\sketchs\\matrixRain\\MatrixRainContainer.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+var SYMBOLS_LENGTH = 120;
+
+var MatrixRainContainer = function MatrixRainContainer(_ref) {
+  Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
+
+  var symbols = [];
+
+  var setup = function setup(p5, canvasParentRef) {
+    p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
+    p5.strokeWeight(0.8);
+    p5.textSize(20);
+
+    for (var i = 0; i < SYMBOLS_LENGTH; i++) {
+      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5);
+    }
+  };
+
+  var draw = function draw(p5) {
+    p5.clear();
+    p5.background(0, 0, 0);
+    symbols.forEach(function (s) {
+      s.update(p5);
+      s.draw(p5);
+    });
+  };
+
+  if (false) {}
+  var Sketch = Object(_loadable_component__WEBPACK_IMPORTED_MODULE_2__["default"])(function () {
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! react-p5 */ "./node_modules/react-p5/build/index.js", 7));
+  });
+  return __jsx("div", {
+    className: "sketch__container",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32,
+      columnNumber: 5
+    }
+  }, __jsx(Sketch, {
+    setup: setup,
+    draw: draw,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 7
+    }
+  }), ";");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MatrixRainContainer);
+
+/***/ }),
+
+/***/ "./src/components/sketchs/matrixRain/symbol.ts":
+/*!*****************************************************!*\
+  !*** ./src/components/sketchs/matrixRain/symbol.ts ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+
+
+
+
+var getRandomSymbol = function getRandomSymbol() {
+  return String.fromCharCode(0x30A0 + Math.round(Math.random() * 96));
+};
+
+var getRandomNumber = function getRandomNumber(max) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+  return Math.floor(Math.random() * max) + min;
+};
+
+var Y_OFFSET = 20;
+
+var checkMouseHover = function checkMouseHover(itemX, itemY, mouseX, mouseY) {
+  return mouseX >= itemX && mouseX <= itemX + 30 && mouseY >= itemY && mouseY <= itemY + 30;
+};
+
+var Symbol = /*#__PURE__*/function () {
+  function Symbol(p5) {
+    var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+    Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Symbol);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "position", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "velocity", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "symbol", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "randomChange", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "tail", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "lastSymbol", void 0);
+
+    this.initSymbol(p5, isHead);
+
+    if (isHead) {
+      this.tail = new Array(getRandomNumber(25));
+
+      for (var i = 0; i < this.tail.length; i++) {
+        this.tail[i] = new Symbol(p5, false);
+      }
+    }
+  }
+
+  Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
+    key: "initSymbol",
+    value: function initSymbol(p5, isHead) {
+      this.symbol = getRandomSymbol();
+      this.randomChange = 0;
+      this.position = p5.createVector(Math.random() * p5.width, -100);
+      this.velocity = p5.createVector(0, Math.random() * 2 + 1);
+    }
+  }, {
+    key: "update",
+    value: function update(p5) {
+      var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+      if (isHead) {
+        this.position.add(this.velocity);
+        this.randomChange = Math.random();
+
+        if (this.randomChange > 0.998) {
+          this.symbol = getRandomSymbol();
+          this.tail.forEach(function (e, i) {
+            return setTimeout(function () {
+              e.lastSymbol = e.symbol;
+              e.symbol = getRandomSymbol();
+              p5.fill(0, 200, 0);
+            }, 75 * i);
+          });
+        }
+
+        if (this.position.y > p5.height + this.tail.length * Y_OFFSET * this.velocity.y / 2) {
+          this.initSymbol(p5, true);
+        }
+      }
+    }
+  }, {
+    key: "draw",
+    value: function draw(p5) {
+      p5.textSize(Math.round(this.velocity.y * 10));
+
+      if (this.tail) {
+        for (var i = 0; i < this.tail.length; i++) {
+          var calculatedY = this.position.y - Y_OFFSET * this.velocity.y / 2 * i;
+
+          if (checkMouseHover(this.position.x, calculatedY, p5.mouseX, p5.mouseY)) {
+            p5.fill(200, 200, 200);
+          } else {
+            var alpha = 255 - 220 / this.tail.length * i;
+            var alphaOffset = this.tail[i].lastSymbol !== this.tail[i].symbol ? alpha + 100 : alpha;
+            p5.fill(0, 200, 0, alphaOffset);
+            this.tail[i].lastSymbol = this.tail[i].symbol;
+          }
+
+          p5.text(this.tail[i].symbol, this.position.x, calculatedY);
+        }
+      }
+    }
+  }]);
+
+  return Symbol;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Symbol);
+
+/***/ }),
+
+/***/ "./src/components/sketchs/particles/ParticlesContainer.tsx":
+/*!*****************************************************************!*\
+  !*** ./src/components/sketchs/particles/ParticlesContainer.tsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _loadable_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @loadable/component */ "./node_modules/@loadable/component/dist/loadable.esm.js");
+/* harmony import */ var _UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
+/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/particles/particle.ts");
+/* harmony import */ var _particleSystem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./particleSystem */ "./src/components/sketchs/particles/particleSystem.ts");
+
+
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\sketchs\\particles\\ParticlesContainer.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -2305,12 +2517,12 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-var AnimatedBackground = function AnimatedBackground(_ref) {
+var ParticlesContainer = function ParticlesContainer(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
 
   var particleSystem;
 
-  var _useParticles = Object(_UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_4__["useParticles"])(),
+  var _useParticles = Object(_UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_3__["useParticles"])(),
       particlesAmount = _useParticles.particlesAmount,
       collision = _useParticles.collision,
       collider = _useParticles.collider;
@@ -2318,14 +2530,14 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
   var setup = function setup(p5, canvasParentRef) {
     p5.createCanvas(window.innerWidth, window.innerHeight, p5.WEBGL).parent(canvasParentRef);
     p5.strokeWeight(0.5);
-    particleSystem = new _particleSystem__WEBPACK_IMPORTED_MODULE_3__["default"](p5, {
+    particleSystem = new _particleSystem__WEBPACK_IMPORTED_MODULE_5__["default"](p5, {
       x: window.innerWidth / 2,
       y: window.innerHeight / 2
     });
     particleSystem.setParticles(particlesAmount);
     particleSystem.collision = collision;
     p5.pointLight(255, 255, 255, p5.width / 2, p5.height / 2, 1000);
-    if (collider) particleSystem.collider = new _particle__WEBPACK_IMPORTED_MODULE_5__["default"]({
+    if (collider) particleSystem.collider = new _particle__WEBPACK_IMPORTED_MODULE_4__["default"]({
       width: 40,
       height: 40
     }, p5, {
@@ -2346,7 +2558,7 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
     return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! react-p5 */ "./node_modules/react-p5/build/index.js", 7));
   });
   return __jsx("div", {
-    className: "sketchContainer",
+    className: "sketch__container",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -2365,14 +2577,131 @@ var AnimatedBackground = function AnimatedBackground(_ref) {
   }), ";");
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (AnimatedBackground);
+/* harmony default export */ __webpack_exports__["default"] = (ParticlesContainer);
 
 /***/ }),
 
-/***/ "./src/components/sketchs/background/particle.ts":
-/*!*******************************************************!*\
-  !*** ./src/components/sketchs/background/particle.ts ***!
-  \*******************************************************/
+/***/ "./src/components/sketchs/particles/ParticlesControlPanel.tsx":
+/*!********************************************************************!*\
+  !*** ./src/components/sketchs/particles/ParticlesControlPanel.tsx ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectDestructuringEmpty */ "./node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../UI/hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
+
+
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\sketchs\\particles\\ParticlesControlPanel.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
+  Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
+
+  var _useParticles = Object(_UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_2__["useParticles"])(),
+      dispatch = _useParticles.dispatch,
+      collision = _useParticles.collision,
+      collider = _useParticles.collider;
+
+  return __jsx("div", {
+    className: "controlPanel",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12,
+      columnNumber: 9
+    }
+  }, __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_COLLIDER",
+        value: !collider
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13,
+      columnNumber: 11
+    }
+  }, "".concat(collider ? "Remove " : "Use", " collider")), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_COLLISION",
+        value: !collision
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 11
+    }
+  }, "".concat(collision ? "Disable " : "Enable", " collision")), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_PARTICLES_AMOUNT",
+        value: 0
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23,
+      columnNumber: 11
+    }
+  }, "Remove particles"), __jsx("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: "SET_PARTICLES_AMOUNT",
+        value: 6
+      });
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28,
+      columnNumber: 11
+    }
+  }, "Reset"), __jsx("input", {
+    type: "number",
+    max: 100,
+    placeholder: "N. particles (80)",
+    onChange: function onChange(e) {
+      var val = parseInt(e.target.value);
+
+      if (!isNaN(val)) {
+        dispatch({
+          type: "SET_PARTICLES_AMOUNT",
+          value: val > 80 ? 80 : val
+        });
+      }
+    },
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33,
+      columnNumber: 11
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ParticlesControlPanel);
+
+/***/ }),
+
+/***/ "./src/components/sketchs/particles/particle.ts":
+/*!******************************************************!*\
+  !*** ./src/components/sketchs/particles/particle.ts ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2382,7 +2711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/background/utils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/particles/utils.ts");
 
 
 
@@ -2489,10 +2818,10 @@ var Particle = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/components/sketchs/background/particleSystem.ts":
-/*!*************************************************************!*\
-  !*** ./src/components/sketchs/background/particleSystem.ts ***!
-  \*************************************************************/
+/***/ "./src/components/sketchs/particles/particleSystem.ts":
+/*!************************************************************!*\
+  !*** ./src/components/sketchs/particles/particleSystem.ts ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2502,7 +2831,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/background/utils.ts");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils */ "./src/components/sketchs/particles/utils.ts");
 
 
 
@@ -2528,7 +2857,8 @@ var ParticleSystem = /*#__PURE__*/function () {
     this.particles = Object(_utils__WEBPACK_IMPORTED_MODULE_4__["getParticles"])(6, 7, p5, offset);
     this.p5 = p5;
     this.collision = true;
-    this.image = p5.loadImage("../../../pictures/meFace.png");
+    this.image = p5.loadImage("".concat("", "/pictures/meFace.png")); //p5.loadImage(`pictures/meFace.png`);
+
     this.offset = offset;
   }
 
@@ -2604,10 +2934,10 @@ var ParticleSystem = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./src/components/sketchs/background/utils.ts":
-/*!****************************************************!*\
-  !*** ./src/components/sketchs/background/utils.ts ***!
-  \****************************************************/
+/***/ "./src/components/sketchs/particles/utils.ts":
+/*!***************************************************!*\
+  !*** ./src/components/sketchs/particles/utils.ts ***!
+  \***************************************************/
 /*! exports provided: switchVelocity, ACC_RATE, checkPos, getParticles, colors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2618,7 +2948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "checkPos", function() { return checkPos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getParticles", function() { return getParticles; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
-/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/background/particle.ts");
+/* harmony import */ var _particle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./particle */ "./src/components/sketchs/particles/particle.ts");
 
 var switchVelocity = function switchVelocity(particleA, particleB, p5) {
   particleA.velocity = p5.createVector(particleA.velocity.x * -Math.random() * 30 - particleB.velocity.x, particleA.velocity.y * -Math.random() * 30 - particleB.velocity.y);
@@ -2645,7 +2975,24 @@ var colors = ["red", "green", "blue", "purple", "orange", "goldenrod", "limegree
 
 /***/ }),
 
-/***/ 1:
+/***/ "./src/utils/strings.ts":
+/*!******************************!*\
+  !*** ./src/utils/strings.ts ***!
+  \******************************/
+/*! exports provided: capitalize */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "capitalize", function() { return capitalize; });
+var capitalize = function capitalize(str) {
+  if (!str) return "";
+  return "".concat(str.slice(0, 1).toUpperCase()).concat(str.slice(1).toLowerCase());
+};
+
+/***/ }),
+
+/***/ 2:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Candre%5Cprojects%5Cmy-page%5Cpages%5Cindex.tsx ***!
   \******************************************************************************************************************************/
@@ -2668,5 +3015,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
