@@ -40,7 +40,6 @@ class Symbol {
         this.velocity = p5.createVector(0, Math.random() * 1.5 + 1.4);
        
     }
-
     update(p5: p5, isHead: boolean = true) {
         if(isHead) {
             this.position.add(this.velocity);
