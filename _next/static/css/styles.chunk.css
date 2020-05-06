@@ -2,27 +2,27 @@
 /*TYPOGRAPHY*/
 @font-face {
   font-family: Roboto;
-  src: url(/fonts/Roboto-Light.ttf); }
+  src: url(/my-page/fonts/Roboto-Light.ttf); }
 
 @font-face {
   font-family: Roboto-LightItalic;
-  src: url(/fonts/Roboto-LightItalic.ttf); }
+  src: url(/my-page/fonts/Roboto-LightItalic.ttf); }
 
 @font-face {
   font-family: Roboto-Regular;
-  src: url(/fonts/Roboto-Regular.ttf); }
+  src: url(/my-page/fonts/Roboto-Regular.ttf); }
 
 @font-face {
   font-family: Roboto-Italic;
-  src: url(/fonts/Roboto-Italic.ttf); }
+  src: url(/my-page/fonts/Roboto-Italic.ttf); }
 
 @font-face {
   font-family: Roboto-BoldItalic;
-  src: url(/fonts/Roboto-BoldItalic.ttf); }
+  src: url(/my-page/fonts/Roboto-BoldItalic.ttf); }
 
 @font-face {
   font-family: Roboto-Bold;
-  src: url(/fonts/Roboto-Bold.ttf); }
+  src: url(/my-page/fonts/Roboto-Bold.ttf); }
 
 .paragraph, .paragraph-s, .paragraph-m, main > .container, footer,
 header, button, select, input, .paragraph-l, .paragraph-xl {

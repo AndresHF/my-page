@@ -2311,7 +2311,7 @@ var _this = undefined,
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
-var SYMBOLS_LENGTH = 120;
+var SYMBOLS_LENGTH = 100;
 
 var MatrixRainContainer = function MatrixRainContainer(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
@@ -2414,7 +2414,7 @@ var Symbol = /*#__PURE__*/function () {
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "lastSymbol", void 0);
 
-    this.initSymbol(p5, isHead);
+    this.initSymbol(p5);
 
     if (isHead) {
       this.tail = new Array(getRandomNumber(25));
@@ -2427,11 +2427,11 @@ var Symbol = /*#__PURE__*/function () {
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
     key: "initSymbol",
-    value: function initSymbol(p5, isHead) {
+    value: function initSymbol(p5) {
       this.symbol = getRandomSymbol();
       this.randomChange = 0;
       this.position = p5.createVector(Math.random() * p5.width, -100);
-      this.velocity = p5.createVector(0, Math.random() * 2 + 1);
+      this.velocity = p5.createVector(0, Math.random() * 1.5 + 1.4);
     }
   }, {
     key: "update",
@@ -2454,7 +2454,7 @@ var Symbol = /*#__PURE__*/function () {
         }
 
         if (this.position.y > p5.height + this.tail.length * Y_OFFSET * this.velocity.y / 2) {
-          this.initSymbol(p5, true);
+          this.initSymbol(p5);
         }
       }
     }
@@ -2992,7 +2992,7 @@ var capitalize = function capitalize(str) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Candre%5Cprojects%5Cmy-page%5Cpages%5Cindex.tsx ***!
   \******************************************************************************************************************************/
@@ -3015,5 +3015,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
