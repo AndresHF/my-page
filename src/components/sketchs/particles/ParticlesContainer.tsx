@@ -1,9 +1,9 @@
 import loadable from "@loadable/component";
-import ParticleSystem from "./particleSystem";
 import { useParticles } from "../../UI/hooks/useParticles";
 import Particle from "./particle";
+import ParticleSystem from "./particleSystem";
 
-const AnimatedBackground: React.FC = ({}) => {
+const ParticlesContainer: React.FC = ({}) => {
   let particleSystem: ParticleSystem | undefined;
   const { particlesAmount, collision, collider } = useParticles();
 
@@ -40,9 +40,9 @@ const AnimatedBackground: React.FC = ({}) => {
   const Sketch = loadable(() => import("react-p5"));
 
   return (
-    <div className="sketchContainer">
+    <div className="sketch__container">
       <Sketch setup={setup} draw={draw} />;
     </div>
   );
 };
-export default AnimatedBackground;
+export default ParticlesContainer;

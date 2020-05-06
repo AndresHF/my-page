@@ -7,16 +7,25 @@ import { ParticlesProvider } from "./hooks/useParticles";
 type LayoutProps = {
   title: string;
   background?: ReactNodeLike;
+  header?: ReactNodeLike;
+  footer?: ReactNodeLike;
+  disableHeader?: boolean;  
 };
 
-const Layout: React.FC<LayoutProps> = ({ title, background, children }) => {
+const Layout: React.FC<LayoutProps> = ({ title, background, header, disableHeader, children }) => {
   return (
     <ParticlesProvider>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/icons/codeNinja.ico" />
+        <link rel="icon" href={`${process.env.BACKEND_URL}/icons/codeNinja.ico`} />
       </Head>
+      {!disableHeader &&  header ? (
+        <Header route="home">
+          {header}
+        </Header>
+      ) : (
       <Header route="home" />
+      )}
       <main>
         {background}
         <div className="container">{children}</div>

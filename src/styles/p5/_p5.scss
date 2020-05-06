@@ -1,5 +1,20 @@
-.sketchContainer {
-  position: absolute;
-  top: 1;
-  left: 0;
+.sketch {
+  &__container {
+    position: absolute;
+    top: 1;
+    left: 0;
+  }
+  &__picker {
+    &--container {
+      display: flex;
+      justify-content: flex-end;
+      min-width: 30rem;
+    }
+  }  
+}
+
+.controlPanel {
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
 }

@@ -4,8 +4,8 @@
 
 const debug = process.env.NODE_ENV !== "production";
 const withSass = require("@zeit/next-sass");
-
-module.exports = withSass({
+const withCSS = require("@zeit/next-css");
+module.exports = withCSS(withSass({
   exportPathMap: function () {
     return {
       "/": { page: "/" },
@@ -34,4 +34,4 @@ module.exports = withSass({
     // Important: return the modified config
     return config
   }, */,
-});
+}));

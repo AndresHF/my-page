@@ -43,3 +43,11 @@ header {
     width: 50%;
   }
 }
+
+.header{
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,7 +1,11 @@
-const Footer: React.FC = () => {
+
+
+const Footer: React.FC = ({children}) => {
   return (
     <footer>
-      <div>FOOTER</div>
+      {children && children || (
+        <div>Default Footer</div>
+      )}
     </footer>
   );
 };

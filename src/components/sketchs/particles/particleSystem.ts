@@ -19,7 +19,7 @@ class ParticleSystem {
     this.particles = getParticles(6, 7, p5, offset);
     this.p5 = p5;
     this.collision = true;
-    this.image = p5.loadImage(`${process.env.BACKEND_URL}/pictures/meFace.png`);
+    this.image = p5.loadImage(`${process.env.BACKEND_URL}/pictures/meFace.png`); //p5.loadImage(`pictures/meFace.png`);
     this.offset = offset;
   }
 
