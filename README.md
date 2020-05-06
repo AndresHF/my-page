@@ -1,5 +1,6 @@
 # my-page
-Please use Google Chrome to visit the page, otherwise some features won't work. Another browsers coming soon.
+Please use Google Chrome to visit the page, otherwise some features won't work. Another browsers coming soon.<br>
+To check it with the best render quality avoid using mobile.
 
 <h3><a href="https://andreshf.github.io/my-page/">Visit link to explore what Im doing.</a></h3>
 
