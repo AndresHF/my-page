@@ -1,7 +1,7 @@
 import loadable from "@loadable/component";
 import Symbol from "./symbol";
 
-const SYMBOLS_LENGTH = 120;
+const SYMBOLS_LENGTH = 100;
 
 const MatrixRainContainer: React.FC = ({}) => {
 

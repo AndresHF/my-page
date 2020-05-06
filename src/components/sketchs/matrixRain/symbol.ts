@@ -24,7 +24,7 @@ class Symbol {
     tail: Array<Symbol>;
     lastSymbol: string;
     constructor(p5: p5, isHead: boolean = true) {
-        this.initSymbol(p5, isHead);
+        this.initSymbol(p5);
         if(isHead) {
             this.tail = new Array(getRandomNumber(25));
             for(let i = 0; i < this.tail.length; i++) {
@@ -33,11 +33,11 @@ class Symbol {
         }
     }
 
-    initSymbol(p5: p5, isHead: boolean) {
+    initSymbol(p5: p5) {
         this.symbol = getRandomSymbol();
         this.randomChange = 0;
         this.position = p5.createVector(Math.random() * p5.width, -100);
-        this.velocity = p5.createVector(0, Math.random() * 2 + 1);
+        this.velocity = p5.createVector(0, Math.random() * 1.5 + 1.4);
        
     }
 
@@ -54,9 +54,9 @@ class Symbol {
                     p5.fill(0, 200, 0);
                 }, 75 * i))
             } 
-            
+
             if(this.position.y > p5.height + this.tail.length * Y_OFFSET * this.velocity.y / 2){
-                this.initSymbol(p5, true);
+                this.initSymbol(p5);
             } 
         }
     }
