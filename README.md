@@ -7,3 +7,8 @@ Please use Google Chrome to visit the page, otherwise some features won't work. 
 
 <h4>Particle system with collision:</h4>
 <img src="https://github.com/AndresHF/my-page/blob/master/readme/particles.gif?raw=true"/>
+
+<br>
+<h4>Matrix raining code:</h4>
+<img src="https://github.com/AndresHF/my-page/blob/master/readme/matrix.gif?raw=true"/>
+
