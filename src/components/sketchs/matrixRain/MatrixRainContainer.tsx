@@ -1,7 +1,7 @@
 import loadable from "@loadable/component";
 import Symbol from "./symbol";
 
-const SYMBOLS_LENGTH = 100;
+const X_OFFSET = 30;
 
 const MatrixRainContainer: React.FC = ({}) => {
 
@@ -11,8 +11,10 @@ const MatrixRainContainer: React.FC = ({}) => {
       .parent(canvasParentRef);
     p5.strokeWeight(0.8);
     p5.textSize(20);
-    for(let i = 0; i < SYMBOLS_LENGTH; i++) {
-        symbols[i] = new Symbol(p5);
+    
+    const mobileOffset = window.innerWidth < 500 ? 0 : 20;
+    for(let i = 0; i < window.innerWidth / 31; i++) {
+      symbols[i] = new Symbol(p5, mobileOffset +  i * X_OFFSET);
     }
   };
 
