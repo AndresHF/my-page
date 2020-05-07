@@ -18,6 +18,7 @@ const CollapsableMenu: React.FC<CollapsableMenuProps> = ({ menu, style }) => {
         <MenuIcon
           onClick={() => setOpen(!open)}
           className={`${open ? "rotate" : "rotate--reverse"}`}
+          style={{ marginLeft: "2rem" }}
         />
       )}
       <div className={`menu__wrapper fade${open ? "In" : "Out"}__left`}>
