@@ -82,7 +82,7 @@ header {
 .header__container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-left: 3rem; }
 
 /* P5 */
@@ -231,7 +231,7 @@ input {
 
 @keyframes fadeInLeft {
   from {
-    left: -50vw; }
+    left: -100vw; }
   to {
     left: 0; } }
 
@@ -239,13 +239,13 @@ input {
   from {
     left: 0; }
   to {
-    left: -50vw; } }
+    left: -100vw; } }
 
 .fadeIn__left {
-  animation: fadeInLeft 0.5s ease forwards; }
+  animation: fadeInLeft 0.6s ease forwards; }
 
 .fadeOut__left {
-  animation: fadeOutLeft 0.5s ease forwards; }
+  animation: fadeOutLeft 0.6s ease forwards; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/
