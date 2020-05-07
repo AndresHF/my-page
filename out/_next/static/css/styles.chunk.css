@@ -25,12 +25,14 @@
   src: url(/my-page/fonts/Roboto-Bold.ttf); }
 
 .paragraph, .paragraph-s, .paragraph-m, main > .container, footer,
-header, button, select, input, .paragraph-l, .paragraph-xl {
+header, button,
+select, input, .paragraph-l, .paragraph-xl {
   font-family: "Roboto-Regular"; }
   .paragraph-s {
     font-size: 1.4rem; }
   .paragraph-m, main > .container, footer,
-  header, button, select, input {
+  header, button,
+  select, input {
     font-size: 1.6rem; }
   .paragraph-l {
     font-size: 2rem; }
@@ -80,7 +82,8 @@ header {
 .header__container {
   width: 100%;
   display: flex;
-  justify-content: flex-end; }
+  justify-content: space-between;
+  padding-left: 3rem; }
 
 /* P5 */
 .sketch__container {
@@ -95,8 +98,21 @@ header {
 
 .controlPanel {
   display: flex;
-  justify-content: center;
-  min-width: 1000px; }
+  justify-content: space-between; }
+
+@media (max-width: 600px) {
+  .controlPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%; }
+    .controlPanel > button {
+      width: 20rem;
+      margin-bottom: 2rem; }
+    .controlPanel > input {
+      width: 20rem;
+      margin-bottom: 2rem;
+      width: 18rem; } }
 
 /* COMPONENTS */
 .card, .card__skill {
@@ -150,7 +166,8 @@ header {
     position: absolute;
     background-color: #f8f8f8f5; }
 
-button, select {
+button,
+select {
   padding: 0.1rem;
   border-radius: 4px;
   min-width: 15rem;
@@ -160,9 +177,11 @@ button, select {
   color: #6083b4;
   cursor: pointer;
   transition: all 0.5s ease; }
-  button:focus, select:focus {
+  button:focus,
+  select:focus {
     outline: 0; }
-  button:hover, select:hover {
+  button:hover,
+  select:hover {
     background-color: #d5e5ff;
     color: #4d6a94; }
 
@@ -177,12 +196,56 @@ input {
   cursor: pointer;
   transition: all 0.5s ease;
   padding-left: 2rem;
-  max-width: 10rem; }
+  width: 10rem; }
   input:focus {
     outline: 0; }
   input:hover {
     background-color: #d5e5ff;
     color: #4d6a94; }
+
+.menu__wrapper {
+  position: absolute;
+  top: 5rem;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #f8f8f8f5; }
+
+/* ANIMATIONS */
+@keyframes rotateForwards {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(90deg); } }
+
+@keyframes reverseBackwards {
+  from {
+    transform: rotate(90deg); }
+  to {
+    transform: rotate(0deg); } }
+
+.rotate {
+  animation: rotateForwards 0.5s ease 0.1s forwards; }
+  .rotate--reverse {
+    transform: rotate(90deg);
+    animation: reverseBackwards 0.5s ease 0.1s forwards; }
+
+@keyframes fadeInLeft {
+  from {
+    left: -50vw; }
+  to {
+    left: 0; } }
+
+@keyframes fadeOutLeft {
+  from {
+    left: 0; }
+  to {
+    left: -50vw; } }
+
+.fadeIn__left {
+  animation: fadeInLeft 0.5s ease forwards; }
+
+.fadeOut__left {
+  animation: fadeOutLeft 0.5s ease forwards; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/
