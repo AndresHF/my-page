@@ -2311,7 +2311,7 @@ var _this = undefined,
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
-var SYMBOLS_LENGTH = 100;
+var X_OFFSET = 30;
 
 var MatrixRainContainer = function MatrixRainContainer(_ref) {
   Object(_babel_runtime_helpers_esm_objectDestructuringEmpty__WEBPACK_IMPORTED_MODULE_0__["default"])(_ref);
@@ -2322,9 +2322,10 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
     p5.strokeWeight(0.8);
     p5.textSize(20);
+    var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
-    for (var i = 0; i < SYMBOLS_LENGTH; i++) {
-      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5);
+    for (var i = 0; i < window.innerWidth / 31; i++) {
+      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset + i * X_OFFSET);
     }
   };
 
@@ -2346,7 +2347,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -2355,7 +2356,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 35,
       columnNumber: 7
     }
   }), ";");
@@ -2382,7 +2383,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var getRandomSymbol = function getRandomSymbol() {
-  return String.fromCharCode(0x30A0 + Math.round(Math.random() * 96));
+  return String.fromCharCode(0x30A0 + Math.round(Math.random() * 90));
 };
 
 var getRandomNumber = function getRandomNumber(max) {
@@ -2390,15 +2391,11 @@ var getRandomNumber = function getRandomNumber(max) {
   return Math.floor(Math.random() * max) + min;
 };
 
-var Y_OFFSET = 20;
-
-var checkMouseHover = function checkMouseHover(itemX, itemY, mouseX, mouseY) {
-  return mouseX >= itemX && mouseX <= itemX + 30 && mouseY >= itemY && mouseY <= itemY + 30;
-};
+var Y_OFFSET = 21;
 
 var Symbol = /*#__PURE__*/function () {
-  function Symbol(p5) {
-    var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  function Symbol(p5, positionX) {
+    var isHead = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Symbol);
 
@@ -2408,72 +2405,59 @@ var Symbol = /*#__PURE__*/function () {
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "symbol", void 0);
 
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "randomChange", void 0);
-
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "tail", void 0);
 
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "lastSymbol", void 0);
-
-    this.initSymbol(p5);
+    this.symbol = getRandomSymbol();
+    this.initSymbol(p5, positionX);
 
     if (isHead) {
-      this.tail = new Array(getRandomNumber(25));
+      this.velocity = p5.createVector(0, Math.random() * 4 + 4);
+      this.tail = new Array(getRandomNumber(p5.width / 100));
 
       for (var i = 0; i < this.tail.length; i++) {
-        this.tail[i] = new Symbol(p5, false);
+        this.tail[i] = new Symbol(p5, positionX, false);
       }
     }
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
     key: "initSymbol",
-    value: function initSymbol(p5) {
-      this.symbol = getRandomSymbol();
-      this.randomChange = 0;
-      this.position = p5.createVector(Math.random() * p5.width, -100);
-      this.velocity = p5.createVector(0, Math.random() * 1.5 + 1.4);
+    value: function initSymbol(p5, positionX) {
+      this.position = p5.createVector(positionX, -Math.random() * 500);
     }
   }, {
     key: "update",
     value: function update(p5) {
       var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
+      if (Math.random() > 0.95) {
+        this.symbol = getRandomSymbol();
+      }
+
       if (isHead) {
         this.position.add(this.velocity);
-        this.randomChange = Math.random();
 
-        if (this.randomChange > 0.998) {
-          this.symbol = getRandomSymbol();
-          this.tail.forEach(function (e, i) {
-            return setTimeout(function () {
-              e.lastSymbol = e.symbol;
-              e.symbol = getRandomSymbol();
-              p5.fill(0, 200, 0);
-            }, 75 * i);
-          });
-        }
-
-        if (this.position.y > p5.height + this.tail.length * Y_OFFSET * this.velocity.y / 2) {
-          this.initSymbol(p5);
+        if (this.position.y > p5.height + this.tail.length * Y_OFFSET) {
+          this.initSymbol(p5, this.position.x);
         }
       }
     }
   }, {
     key: "draw",
     value: function draw(p5) {
-      p5.textSize(Math.round(this.velocity.y * 10));
+      p5.fill(180, 255, 180);
+      p5.text(this.symbol, this.position.x, this.position.y);
 
       if (this.tail) {
         for (var i = 0; i < this.tail.length; i++) {
-          var calculatedY = this.position.y - Y_OFFSET * this.velocity.y / 2 * i;
+          this.tail[i].update(p5, false);
+          var calculatedY = this.position.y - Y_OFFSET * i - 20;
+          var alpha = 255 - 5 * i;
 
-          if (checkMouseHover(this.position.x, calculatedY, p5.mouseX, p5.mouseY)) {
-            p5.fill(200, 200, 200);
+          if (i < 2) {
+            p5.fill(120, 255, 120, alpha * 3);
           } else {
-            var alpha = 255 - 220 / this.tail.length * i;
-            var alphaOffset = this.tail[i].lastSymbol !== this.tail[i].symbol ? alpha + 100 : alpha;
-            p5.fill(0, 200, 0, alphaOffset);
-            this.tail[i].lastSymbol = this.tail[i].symbol;
+            p5.fill(80, 255, 80, alpha);
           }
 
           p5.text(this.tail[i].symbol, this.position.x, calculatedY);
