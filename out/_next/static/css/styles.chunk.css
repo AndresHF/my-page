@@ -85,6 +85,11 @@ header {
   justify-content: space-around;
   padding-left: 3rem; }
 
+@media (max-width: 600px) {
+  .header__container {
+    width: 80%;
+    padding-left: 5rem; } }
+
 /* P5 */
 .sketch__container {
   position: absolute;

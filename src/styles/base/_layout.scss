@@ -52,3 +52,11 @@ header {
     padding-left: 3rem;
   }
 }
+@media (max-width: 600px) {
+  .header {
+    &__container {
+      width: 80%;
+      padding-left: 5rem;
+    }
+  }
+}
