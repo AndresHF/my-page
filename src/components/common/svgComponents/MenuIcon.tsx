@@ -8,7 +8,6 @@ const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
       borderRadius: "50%",
       border: "1px solid black",
       padding: "1rem",
-      marginLeft: "2rem",
       zIndex: 100,
     }}
   >
