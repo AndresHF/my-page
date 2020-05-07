@@ -1,13 +1,10 @@
 const MenuIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    height="1em"
+    height="2em"
     viewBox="0 0 512 512"
-    width="1em"
+    width="2em"
     {...props}
     style={{
-      borderRadius: "50%",
-      border: "1px solid black",
-      padding: "1rem",
       zIndex: 100,
     }}
   >
