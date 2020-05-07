@@ -10484,15 +10484,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 var MenuIcon = function MenuIcon(props) {
   return __jsx("svg", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    height: "1em",
+    height: "2em",
     viewBox: "0 0 512 512",
-    width: "1em"
+    width: "2em"
   }, props, {
     style: {
-      borderRadius: "50%",
-      border: "1px solid black",
-      padding: "1rem",
-      marginLeft: "2rem",
       zIndex: 100
     },
     __self: _this,
@@ -10506,7 +10502,7 @@ var MenuIcon = function MenuIcon(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15,
+      lineNumber: 11,
       columnNumber: 5
     }
   }));
@@ -11326,7 +11322,7 @@ var capitalize = function capitalize(str) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Candre%5Cprojects%5Cmy-page%5Cpages%5Cindex.tsx ***!
   \******************************************************************************************************************************/
@@ -11349,5 +11345,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
