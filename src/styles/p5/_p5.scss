@@ -1,6 +1,6 @@
 @mixin responsiveContent {
   width: 20rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .sketch {
   &__container {
@@ -27,7 +27,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 50%;
+    align-items: center;
+    width: 22rem;
     & > button {
       @include responsiveContent();
     }

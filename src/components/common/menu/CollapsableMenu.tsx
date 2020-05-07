@@ -13,7 +13,7 @@ const CollapsableMenu: React.FC<CollapsableMenuProps> = ({ menu, style }) => {
   const [open, setOpen] = useState(!mdAndDown);
   if (!mdAndDown) return <div>{menu}</div>;
   return (
-    <>
+    <div style={{ position: "relative", width: "80vw", marginLeft: "4rem" }}>
       {mdAndDown && (
         <MenuIcon
           onClick={() => setOpen(!open)}
@@ -23,7 +23,7 @@ const CollapsableMenu: React.FC<CollapsableMenuProps> = ({ menu, style }) => {
       <div className={`menu__wrapper fade${open ? "In" : "Out"}__left`}>
         {menu}
       </div>
-    </>
+    </div>
   );
 };
 export default CollapsableMenu;

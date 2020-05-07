@@ -30,7 +30,7 @@ main {
 footer,
 header {
   @extend .paragraph-m;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -55,8 +55,8 @@ header {
 @media (max-width: 600px) {
   .header {
     &__container {
-      width: 80%;
-      padding-left: 5rem;
+      width: 100vw;
+      margin-left: 0;
     }
   }
 }
