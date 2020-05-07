@@ -10486,14 +10486,15 @@ var MenuIcon = function MenuIcon(props) {
   return __jsx("svg", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     height: "1em",
     viewBox: "0 0 512 512",
-    width: "1em",
+    width: "1em"
+  }, props, {
     style: {
       borderRadius: "50%",
       border: "1px solid black",
       padding: "1rem",
+      marginLeft: "2rem",
       zIndex: 100
-    }
-  }, props, {
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -10505,7 +10506,7 @@ var MenuIcon = function MenuIcon(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 15,
       columnNumber: 5
     }
   }));
