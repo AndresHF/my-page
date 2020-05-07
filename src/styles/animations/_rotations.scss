@@ -1,0 +1,24 @@
+@keyframes rotateForwards {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(90deg);
+  }
+}
+@keyframes reverseBackwards {
+  from {
+    transform: rotate(90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.rotate {
+  animation: rotateForwards 0.5s ease 0.1s forwards;
+  &--reverse {
+    transform: rotate(90deg);
+    animation: reverseBackwards 0.5s ease 0.1s forwards;
+  }
+}

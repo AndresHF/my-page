@@ -44,10 +44,11 @@ header {
   }
 }
 
-.header{
+.header {
   &__container {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-left: 3rem;
   }
 }

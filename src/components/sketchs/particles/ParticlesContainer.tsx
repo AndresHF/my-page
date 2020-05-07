@@ -2,14 +2,17 @@ import loadable from "@loadable/component";
 import { useParticles } from "../../UI/hooks/useParticles";
 import Particle from "./particle";
 import ParticleSystem from "./particleSystem";
+import { useResponsive } from "../../../hooks/useResponsive";
+import p5 from "p5";
 
 const ParticlesContainer: React.FC = ({}) => {
   let particleSystem: ParticleSystem | undefined;
   const { particlesAmount, collision, collider } = useParticles();
-
+  const { mdAndDown } = useResponsive();
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(window.innerWidth, window.innerHeight, p5.WEBGL)
-      .parent(canvasParentRef);
+    p5.createCanvas(window.innerWidth, window.innerHeight, p5.WEBGL).parent(
+      canvasParentRef
+    );
     p5.strokeWeight(0.5);
     particleSystem = new ParticleSystem(p5, {
       x: window.innerWidth / 2,
@@ -24,16 +27,20 @@ const ParticlesContainer: React.FC = ({}) => {
       particleSystem.collider = new Particle(
         { width: 40, height: 40 },
         p5,
-        {x: window.innerWidth / 2,y: window.innerHeight / 2},
-        "black",
+        { x: window.innerWidth / 2, y: window.innerHeight / 2 },
+        "black"
       );
   };
 
-  const draw = (p5) => {
+  const draw = (p5: p5) => {
     p5.background(255, 100, 255, 0);
     p5.clear();
     p5.noStroke();
     particleSystem.update();
+    if (mdAndDown) {
+      p5.fill(50, 50, 50, 100);
+      p5.ellipse(p5.mouseX - p5.width / 2, p5.mouseY - p5.height / 2, 20, 20);
+    }
   };
 
   if (typeof window == "undefined") return null;

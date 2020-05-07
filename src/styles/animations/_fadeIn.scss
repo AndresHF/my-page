@@ -1,0 +1,28 @@
+@keyframes fadeInLeft {
+  from {
+    left: -50vw;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes fadeOutLeft {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50vw;
+  }
+}
+
+.fadeIn {
+  &__left {
+    animation: fadeInLeft 0.5s ease forwards;
+  }
+}
+.fadeOut {
+  &__left {
+    animation: fadeOutLeft 0.5s ease forwards;
+  }
+}

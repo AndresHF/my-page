@@ -18,12 +18,13 @@
   }
 }
 
-button, select {
+button,
+select {
   @include commonStyles;
 }
 
 input {
   @include commonStyles;
   padding-left: 2rem;
-  max-width: 10rem;
+  width: 10rem;
 }

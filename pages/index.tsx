@@ -9,11 +9,12 @@ import ParticleSystem from "../src/components/sketchs/particles/particleSystem";
 import ParticlesContainer from "../src/components/sketchs/particles/ParticlesContainer";
 import SketchPicker from "../src/components/sketchs/SketchPicker";
 import ParticlesControlPanel from "../src/components/sketchs/particles/ParticlesControlPanel";
+import CollapsableMenu from "../src/components/common/menu/CollapsableMenu";
 
 type HomeProps = {};
 
 const SKILL_CARDS = [REACT_CARD_CONFIG];
-export type BACKGROUND_STATE = "PARTICLES" | "MATRIX"; 
+export type BACKGROUND_STATE = "PARTICLES" | "MATRIX";
 
 const switchBackground = (state: BACKGROUND_STATE) => {
   switch (state) {
@@ -24,12 +25,13 @@ const switchBackground = (state: BACKGROUND_STATE) => {
     default:
       return <MatrixRainContainer />;
   }
-}
-
+};
 
 const Home: React.FC<HomeProps> = ({}) => {
   const [loading, setLoading] = useState(true);
-  const [backgroundState, setBackgroundState] = useState("MATRIX" as BACKGROUND_STATE);
+  const [backgroundState, setBackgroundState] = useState(
+    "MATRIX" as BACKGROUND_STATE
+  );
   useEffect(() => {
     setLoading(false);
   }, []);
@@ -38,17 +40,21 @@ const Home: React.FC<HomeProps> = ({}) => {
   //<ParticlesContainer />
   return (
     <div>
-      <Layout 
-        title="home" 
+      <Layout
+        title="home"
         background={switchBackground(backgroundState)}
-        header={(
+        header={
           <div className="header__container">
             {backgroundState === "PARTICLES" && (
-              <ParticlesControlPanel />
+              <CollapsableMenu menu={<ParticlesControlPanel />} />
             )}
-            <SketchPicker onChange={(background: BACKGROUND_STATE) => setBackgroundState(background)}/>
+            <SketchPicker
+              onChange={(background: BACKGROUND_STATE) =>
+                setBackgroundState(background)
+              }
+            />
           </div>
-        )}
+        }
       >
         {/* <CardContainer cards={SKILL_CARDS} /> */}
         {/* <Link href="/about" as={`${process.env.BACKEND_URL}/about`}>

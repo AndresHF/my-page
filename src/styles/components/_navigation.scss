@@ -1,0 +1,9 @@
+.menu {
+  &__wrapper {
+    position: absolute;
+    top: 5rem;
+    height: 100vh;
+    z-index: 1000;
+    background-color: $white-broken;
+  }
+}
