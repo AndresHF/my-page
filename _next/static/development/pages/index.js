@@ -10624,7 +10624,8 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
   var setup = function setup(p5, canvasParentRef) {
     p5.createCanvas(window.innerWidth, window.innerHeight + 50).parent(canvasParentRef);
     p5.strokeWeight(2);
-    p5.textSize(20);
+    p5.textSize(20); //p5.frameRate(100);
+
     var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
     for (var i = 0; i < window.innerWidth / 31; i++) {
@@ -10649,7 +10650,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36,
+      lineNumber: 37,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -10658,7 +10659,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 7
     }
   }), ";");
@@ -10735,7 +10736,7 @@ var Symbol = /*#__PURE__*/function () {
     value: function initSymbol(p5, positionX, isMobile) {
       this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
       this.shadeOffset = getRandomNumber(255, 100);
-      this.rainSpeed = isMobile ? getRandomNumber(120, 80) : getRandomNumber(50, 20);
+      this.rainSpeed = isMobile ? getRandomNumber(80, 50) : getRandomNumber(50, 20);
     }
   }, {
     key: "update",
@@ -10759,8 +10760,8 @@ var Symbol = /*#__PURE__*/function () {
 
         if (_this.tail[i].shouldGlow) {
           p5.strokeWeight(2);
-          p5.stroke(255, 80);
-          p5.fill(255, 80);
+          p5.stroke(255, 100);
+          p5.fill(255, 100);
           _this.tail[i].shouldGlow = false;
         } else {
           p5.strokeWeight(0.2);

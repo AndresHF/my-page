@@ -67,7 +67,7 @@ var Symbol = /*#__PURE__*/function () {
     value: function initSymbol(p5, positionX, isMobile) {
       this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
       this.shadeOffset = getRandomNumber(255, 100);
-      this.rainSpeed = isMobile ? getRandomNumber(120, 80) : getRandomNumber(50, 20);
+      this.rainSpeed = isMobile ? getRandomNumber(80, 50) : getRandomNumber(50, 20);
     }
   }, {
     key: "update",
@@ -91,7 +91,7 @@ var Symbol = /*#__PURE__*/function () {
 
         if (_this.tail[i].shouldGlow) {
           p5.strokeWeight(2);
-          p5.stroke(255, 80);
+          p5.stroke(255, 100);
           p5.fill(255, 80);
           _this.tail[i].shouldGlow = false;
         } else {
@@ -121,4 +121,4 @@ var Symbol = /*#__PURE__*/function () {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.3c51d1da5b49b13f7e83.hot-update.js.map
+//# sourceMappingURL=index.js.c0ded848da6fc41628a3.hot-update.js.map
