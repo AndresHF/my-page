@@ -66,7 +66,7 @@ main {
 
 footer,
 header {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -89,8 +89,8 @@ header {
 
 @media (max-width: 600px) {
   .header__container {
-    width: 100vw;
-    margin-left: 0; } }
+    width: 80%;
+    padding-left: 5rem; } }
 
 /* P5 */
 .sketch__container {
@@ -112,14 +112,13 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 22rem; }
+    max-width: 50%; }
     .controlPanel > button {
       width: 20rem;
-      margin-top: 2rem; }
+      margin-bottom: 2rem; }
     .controlPanel > input {
       width: 20rem;
-      margin-top: 2rem;
+      margin-bottom: 2rem;
       width: 18rem; } }
 
 /* COMPONENTS */
@@ -213,7 +212,7 @@ input {
 
 .menu__wrapper {
   position: absolute;
-  top: 3.4rem;
+  top: 5rem;
   height: 100vh;
   z-index: 1000;
   background-color: #f8f8f8f5; }
@@ -241,11 +240,11 @@ input {
   from {
     left: -100vw; }
   to {
-    left: -15px; } }
+    left: 0; } }
 
 @keyframes fadeOutLeft {
   from {
-    left: -15px; }
+    left: 0; }
   to {
     left: -100vw; } }
 

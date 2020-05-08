@@ -10441,19 +10441,7 @@ var CollapsableMenu = function CollapsableMenu(_ref) {
       columnNumber: 26
     }
   }, menu);
-  return __jsx("div", {
-    style: {
-      position: "relative",
-      width: "80vw",
-      marginLeft: "4rem"
-    },
-    __self: _this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16,
-      columnNumber: 5
-    }
-  }, mdAndDown && __jsx(_svgComponents_MenuIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, mdAndDown && __jsx(_svgComponents_MenuIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
     onClick: function onClick() {
       return setOpen(!open);
     },
@@ -10506,10 +10494,7 @@ var MenuIcon = function MenuIcon(props) {
     width: "2em"
   }, props, {
     style: {
-      zIndex: 100,
-      position: "absolute",
-      top: 0,
-      left: 0
+      zIndex: 100
     },
     __self: _this,
     __source: {
@@ -10522,7 +10507,7 @@ var MenuIcon = function MenuIcon(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14,
+      lineNumber: 11,
       columnNumber: 5
     }
   }));
