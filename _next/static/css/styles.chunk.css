@@ -82,8 +82,10 @@ header {
 .header__container {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding-left: 3rem; }
+  justify-content: flex-end;
+  padding-left: 3rem;
+  z-index: 999;
+  background-color: transparent; }
 
 @media (max-width: 600px) {
   .header__container {
@@ -93,7 +95,7 @@ header {
 /* P5 */
 .sketch__container {
   position: absolute;
-  top: 1;
+  top: -1rem;
   left: 0; }
 
 .sketch__picker--container {

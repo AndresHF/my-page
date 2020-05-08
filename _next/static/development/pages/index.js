@@ -10152,8 +10152,10 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 var Header = function Header(_ref) {
   var route = _ref.route,
+      style = _ref.style,
       children = _ref.children;
   return __jsx("header", {
+    style: style,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
@@ -10164,8 +10166,8 @@ var Header = function Header(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13,
-      columnNumber: 9
+      lineNumber: 12,
+      columnNumber: 34
     }
   }, "Default Header"));
 };
@@ -10210,21 +10212,21 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 23,
       columnNumber: 5
     }
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18,
+      lineNumber: 24,
       columnNumber: 7
     }
   }, __jsx("title", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19,
+      lineNumber: 25,
       columnNumber: 9
     }
   }, title), __jsx("link", {
@@ -10233,15 +10235,18 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20,
+      lineNumber: 26,
       columnNumber: 9
     }
   })), !disableHeader && header ? __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     route: "home",
+    style: {
+      backgroundColor: "transparent"
+    },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23,
+      lineNumber: 32,
       columnNumber: 9
     }
   }, header) : __jsx(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -10249,14 +10254,14 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
-      columnNumber: 7
+      lineNumber: 36,
+      columnNumber: 9
     }
   }), __jsx("main", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 38,
       columnNumber: 7
     }
   }, background, __jsx("div", {
@@ -10264,14 +10269,14 @@ var Layout = function Layout(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 40,
       columnNumber: 9
     }
   }, children)), __jsx(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 42,
       columnNumber: 7
     }
   }));
@@ -10617,8 +10622,8 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
   var symbols = [];
 
   var setup = function setup(p5, canvasParentRef) {
-    p5.createCanvas(window.innerWidth, window.innerHeight).parent(canvasParentRef);
-    p5.strokeWeight(0.8);
+    p5.createCanvas(window.innerWidth, window.innerHeight + 50).parent(canvasParentRef);
+    p5.strokeWeight(2);
     p5.textSize(20);
     var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
@@ -10632,7 +10637,6 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     p5.background(0, 0, 0);
     symbols.forEach(function (s) {
       s.update(p5);
-      s.draw(p5);
     });
   };
 
@@ -10645,7 +10649,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 32,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -10654,7 +10658,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 33,
       columnNumber: 7
     }
   }), ";");
@@ -10681,7 +10685,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var getRandomSymbol = function getRandomSymbol() {
-  return String.fromCharCode(0x30A0 + Math.round(Math.random() * 90));
+  return String.fromCharCode(0x30a0 + Math.round(Math.random() * 90));
 };
 
 var getRandomNumber = function getRandomNumber(max) {
@@ -10699,21 +10703,29 @@ var Symbol = /*#__PURE__*/function () {
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "position", void 0);
 
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "velocity", void 0);
-
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "symbol", void 0);
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "tail", void 0);
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "shouldGlow", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "shadeOffset", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "rainSpeed", void 0);
+
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "changeOffset", void 0);
+
     this.symbol = getRandomSymbol();
     this.initSymbol(p5, positionX);
+    this.shadeOffset = 0;
 
     if (isHead) {
-      this.velocity = p5.createVector(0, Math.random() * 4 + 4);
-      this.tail = new Array(getRandomNumber(p5.width / 100));
+      this.tail = new Array(Math.floor(p5.height / 22));
+      this.shadeOffset = getRandomNumber(255, 120);
 
       for (var i = 0; i < this.tail.length; i++) {
         this.tail[i] = new Symbol(p5, positionX, false);
+        this.tail[i].changeOffset = Math.random() * 10;
       }
     }
   }
@@ -10721,45 +10733,50 @@ var Symbol = /*#__PURE__*/function () {
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
     key: "initSymbol",
     value: function initSymbol(p5, positionX) {
-      this.position = p5.createVector(positionX, -Math.random() * 500);
+      this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
+      this.shadeOffset = getRandomNumber(255, 100);
+      this.rainSpeed = getRandomNumber(50, 20);
     }
   }, {
     key: "update",
     value: function update(p5) {
-      var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      var _this = this;
 
-      if (Math.random() > 0.95) {
-        this.symbol = getRandomSymbol();
-      }
+      var changeSymbol = Math.random() > 0.99;
 
-      if (isHead) {
-        this.position.add(this.velocity);
+      var _loop = function _loop(i) {
+        var calculatedY = _this.position.y - Y_OFFSET * i - 20;
+        if (p5.frameCount % 2 == 0) _this.tail[i].shadeOffset -= getRandomNumber(10, 4);
 
-        if (this.position.y > p5.height + this.tail.length * Y_OFFSET) {
-          this.initSymbol(p5, this.position.x);
+        if (changeSymbol) {
+          setTimeout(function () {
+            _this.tail[i].shouldGlow = true;
+            _this.tail[i].symbol = getRandomSymbol();
+            _this.tail[i].shadeOffset = getRandomNumber(350, 100);
+            _this.tail[i].changeOffset = Math.random() * 8;
+          }, 6000 - i * _this.rainSpeed);
         }
-      }
-    }
-  }, {
-    key: "draw",
-    value: function draw(p5) {
-      p5.fill(180, 255, 180);
-      p5.text(this.symbol, this.position.x, this.position.y);
 
-      if (this.tail) {
-        for (var i = 0; i < this.tail.length; i++) {
-          this.tail[i].update(p5, false);
-          var calculatedY = this.position.y - Y_OFFSET * i - 20;
-          var alpha = 255 - 5 * i;
-
-          if (i < 2) {
-            p5.fill(120, 255, 120, alpha * 3);
-          } else {
-            p5.fill(80, 255, 80, alpha);
-          }
-
-          p5.text(this.tail[i].symbol, this.position.x, calculatedY);
+        if (_this.tail[i].shouldGlow) {
+          p5.strokeWeight(2);
+          p5.stroke(255, 80);
+          p5.fill(255, 80);
+          _this.tail[i].shouldGlow = false;
+        } else {
+          p5.strokeWeight(0.2);
+          p5.stroke(80, 255, 80, _this.tail[i].shadeOffset);
+          p5.fill(80, 255, 80, _this.tail[i].shadeOffset);
         }
+
+        if (Math.random() > _this.tail[i].changeOffset) {
+          _this.tail[i].symbol = getRandomSymbol();
+        }
+
+        p5.text(_this.tail[i].symbol, _this.position.x, calculatedY);
+      };
+
+      for (var i = this.tail.length - 1; i >= 0; i--) {
+        _loop(i);
       }
     }
   }]);
@@ -11337,7 +11354,7 @@ var capitalize = function capitalize(str) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=C%3A%5CUsers%5Candre%5Cprojects%5Cmy-page%5Cpages%5Cindex.tsx ***!
   \******************************************************************************************************************************/
@@ -11360,5 +11377,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map
