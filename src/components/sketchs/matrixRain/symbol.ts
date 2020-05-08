@@ -1,4 +1,5 @@
 import p5 from "p5";
+import { isBoolean } from "util";
 
 const getRandomSymbol = () => {
   return String.fromCharCode(0x30a0 + Math.round(Math.random() * 90));
@@ -19,24 +20,31 @@ class Symbol {
   rainSpeed: number;
   changeOffset: number;
 
-  constructor(p5: p5, positionX: number, isHead: boolean = true) {
+  constructor(
+    p5: p5,
+    isMobile: boolean,
+    positionX: number,
+    isHead: boolean = true
+  ) {
     this.symbol = getRandomSymbol();
-    this.initSymbol(p5, positionX);
+    this.initSymbol(p5, positionX, isMobile);
     this.shadeOffset = 0;
     if (isHead) {
       this.tail = new Array(Math.floor(p5.height / 22));
       this.shadeOffset = getRandomNumber(255, 120);
       for (let i = 0; i < this.tail.length; i++) {
-        this.tail[i] = new Symbol(p5, positionX, false);
+        this.tail[i] = new Symbol(p5, isMobile, positionX, false);
         this.tail[i].changeOffset = Math.random() * 10;
       }
     }
   }
 
-  initSymbol(p5: p5, positionX: number) {
+  initSymbol(p5: p5, positionX: number, isMobile: boolean) {
     this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
     this.shadeOffset = getRandomNumber(255, 100);
-    this.rainSpeed = getRandomNumber(80, 60);
+    this.rainSpeed = isMobile
+      ? getRandomNumber(120, 80)
+      : getRandomNumber(50, 20);
   }
   update(p5: p5) {
     const changeSymbol = Math.random() > 0.99;

@@ -10628,7 +10628,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
     for (var i = 0; i < window.innerWidth / 31; i++) {
-      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset + i * X_OFFSET);
+      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset === 0, mobileOffset + i * X_OFFSET);
     }
   };
 
@@ -10649,7 +10649,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 36,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -10658,7 +10658,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33,
+      lineNumber: 37,
       columnNumber: 7
     }
   }), ";");
@@ -10696,8 +10696,8 @@ var getRandomNumber = function getRandomNumber(max) {
 var Y_OFFSET = 21;
 
 var Symbol = /*#__PURE__*/function () {
-  function Symbol(p5, positionX) {
-    var isHead = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  function Symbol(p5, isMobile, positionX) {
+    var isHead = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
 
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Symbol);
 
@@ -10716,7 +10716,7 @@ var Symbol = /*#__PURE__*/function () {
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "changeOffset", void 0);
 
     this.symbol = getRandomSymbol();
-    this.initSymbol(p5, positionX);
+    this.initSymbol(p5, positionX, isMobile);
     this.shadeOffset = 0;
 
     if (isHead) {
@@ -10724,7 +10724,7 @@ var Symbol = /*#__PURE__*/function () {
       this.shadeOffset = getRandomNumber(255, 120);
 
       for (var i = 0; i < this.tail.length; i++) {
-        this.tail[i] = new Symbol(p5, positionX, false);
+        this.tail[i] = new Symbol(p5, isMobile, positionX, false);
         this.tail[i].changeOffset = Math.random() * 10;
       }
     }
@@ -10732,10 +10732,10 @@ var Symbol = /*#__PURE__*/function () {
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
     key: "initSymbol",
-    value: function initSymbol(p5, positionX) {
+    value: function initSymbol(p5, positionX, isMobile) {
       this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
       this.shadeOffset = getRandomNumber(255, 100);
-      this.rainSpeed = getRandomNumber(50, 20);
+      this.rainSpeed = isMobile ? getRandomNumber(120, 80) : getRandomNumber(50, 20);
     }
   }, {
     key: "update",
