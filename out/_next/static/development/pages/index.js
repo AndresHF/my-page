@@ -10629,7 +10629,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
     for (var i = 0; i < window.innerWidth / 31; i++) {
-      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset === 0, mobileOffset + i * X_OFFSET);
+      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset + i * X_OFFSET);
     }
   };
 
@@ -10638,6 +10638,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     p5.background(0, 0, 0);
     symbols.forEach(function (s) {
       s.update(p5);
+      s.draw(p5);
     });
   };
 
@@ -10650,7 +10651,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 34,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -10659,7 +10660,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 35,
       columnNumber: 7
     }
   }), ";");
@@ -10685,6 +10686,80 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import p5 from "p5";
+// import { isBoolean } from "util";
+// const getRandomSymbol = () => {
+//   return String.fromCharCode(0x30a0 + Math.round(Math.random() * 90));
+// };
+// const getRandomNumber = (max: number, min: number = 10) => {
+//   return Math.floor(Math.random() * max) + min;
+// };
+// const Y_OFFSET = 21;
+// class Symbol {
+//   position: p5.Vector;
+//   symbol: string;
+//   tail: Array<Symbol>;
+//   shouldGlow: boolean;
+//   shadeOffset: number;
+//   rainSpeed: number;
+//   changeOffset: number;
+//   constructor(
+//     p5: p5,
+//     isMobile: boolean,
+//     positionX: number,
+//     isHead: boolean = true
+//   ) {
+//     this.symbol = getRandomSymbol();
+//     this.initSymbol(p5, positionX, isMobile);
+//     this.shadeOffset = 0;
+//     if (isHead) {
+//       this.tail = new Array(Math.floor(p5.height / 22));
+//       this.shadeOffset = getRandomNumber(255, 120);
+//       for (let i = 0; i < this.tail.length; i++) {
+//         this.tail[i] = new Symbol(p5, isMobile, positionX, false);
+//         this.tail[i].changeOffset = Math.random() * 10;
+//       }
+//     }
+//   }
+//   initSymbol(p5: p5, positionX: number, isMobile: boolean) {
+//     this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
+//     this.shadeOffset = getRandomNumber(255, 100);
+//     this.rainSpeed = isMobile
+//       ? getRandomNumber(80, 50)
+//       : getRandomNumber(50, 20);
+//   }
+//   update(p5: p5) {
+//     const changeSymbol = Math.random() > 0.99;
+//     for (let i = this.tail.length - 1; i >= 0; i--) {
+//       const calculatedY = this.position.y - Y_OFFSET * i - 20;
+//       if (p5.frameCount % 2 == 0)
+//         this.tail[i].shadeOffset -= getRandomNumber(10, 4);
+//       if (changeSymbol) {
+//         setTimeout(() => {
+//           this.tail[i].shouldGlow = true;
+//           this.tail[i].symbol = getRandomSymbol();
+//           this.tail[i].shadeOffset = getRandomNumber(350, 100);
+//           this.tail[i].changeOffset = Math.random() * 8;
+//         }, 6000 - i * this.rainSpeed);
+//       }
+//       if (this.tail[i].shouldGlow) {
+//         p5.strokeWeight(2);
+//         p5.stroke(255, 100);
+//         p5.fill(255, 100);
+//         this.tail[i].shouldGlow = false;
+//       } else {
+//         p5.strokeWeight(0.2);
+//         p5.stroke(80, 255, 80, this.tail[i].shadeOffset);
+//         p5.fill(80, 255, 80, this.tail[i].shadeOffset);
+//       }
+//       if (Math.random() > this.tail[i].changeOffset) {
+//         this.tail[i].symbol = getRandomSymbol();
+//       }
+//       p5.text(this.tail[i].symbol, this.position.x, calculatedY);
+//     }
+//   }
+// }
+// export default Symbol;
 var getRandomSymbol = function getRandomSymbol() {
   return String.fromCharCode(0x30a0 + Math.round(Math.random() * 90));
 };
@@ -10697,87 +10772,74 @@ var getRandomNumber = function getRandomNumber(max) {
 var Y_OFFSET = 21;
 
 var Symbol = /*#__PURE__*/function () {
-  function Symbol(p5, isMobile, positionX) {
-    var isHead = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  function Symbol(p5, positionX) {
+    var isHead = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
 
     Object(_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Symbol);
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "position", void 0);
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "velocity", void 0);
+
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "symbol", void 0);
 
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "tail", void 0);
 
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "shouldGlow", void 0);
-
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "shadeOffset", void 0);
-
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "rainSpeed", void 0);
-
-    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "changeOffset", void 0);
-
     this.symbol = getRandomSymbol();
-    this.initSymbol(p5, positionX, isMobile);
-    this.shadeOffset = 0;
+    this.initSymbol(p5, positionX);
 
     if (isHead) {
-      this.tail = new Array(Math.floor(p5.height / 22));
-      this.shadeOffset = getRandomNumber(255, 120);
+      this.velocity = p5.createVector(0, Math.random() * 4 + 4);
+      this.tail = new Array(getRandomNumber(p5.width / 100));
 
       for (var i = 0; i < this.tail.length; i++) {
-        this.tail[i] = new Symbol(p5, isMobile, positionX, false);
-        this.tail[i].changeOffset = Math.random() * 10;
+        this.tail[i] = new Symbol(p5, positionX, false);
       }
     }
   }
 
   Object(_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Symbol, [{
     key: "initSymbol",
-    value: function initSymbol(p5, positionX, isMobile) {
-      this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
-      this.shadeOffset = getRandomNumber(255, 100);
-      this.rainSpeed = isMobile ? getRandomNumber(80, 50) : getRandomNumber(50, 20);
+    value: function initSymbol(p5, positionX) {
+      this.position = p5.createVector(positionX, -Math.random() * 500);
     }
   }, {
     key: "update",
     value: function update(p5) {
-      var _this = this;
+      var isHead = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-      var changeSymbol = Math.random() > 0.99;
+      if (Math.random() > 0.95) {
+        this.symbol = getRandomSymbol();
+      }
 
-      var _loop = function _loop(i) {
-        var calculatedY = _this.position.y - Y_OFFSET * i - 20;
-        if (p5.frameCount % 2 == 0) _this.tail[i].shadeOffset -= getRandomNumber(10, 4);
+      if (isHead) {
+        this.position.add(this.velocity);
 
-        if (changeSymbol) {
-          setTimeout(function () {
-            _this.tail[i].shouldGlow = true;
-            _this.tail[i].symbol = getRandomSymbol();
-            _this.tail[i].shadeOffset = getRandomNumber(350, 100);
-            _this.tail[i].changeOffset = Math.random() * 8;
-          }, 6000 - i * _this.rainSpeed);
+        if (this.position.y > p5.height + this.tail.length * Y_OFFSET) {
+          this.initSymbol(p5, this.position.x);
         }
+      }
+    }
+  }, {
+    key: "draw",
+    value: function draw(p5) {
+      p5.fill(180, 255, 180);
+      p5.text(this.symbol, this.position.x, this.position.y);
 
-        if (_this.tail[i].shouldGlow) {
-          p5.strokeWeight(2);
-          p5.stroke(255, 100);
-          p5.fill(255, 100);
-          _this.tail[i].shouldGlow = false;
-        } else {
-          p5.strokeWeight(0.2);
-          p5.stroke(80, 255, 80, _this.tail[i].shadeOffset);
-          p5.fill(80, 255, 80, _this.tail[i].shadeOffset);
+      if (this.tail) {
+        for (var i = 0; i < this.tail.length; i++) {
+          this.tail[i].update(p5, false);
+          var calculatedY = this.position.y - Y_OFFSET * i - 20;
+          var alpha = 255 - 5 * i;
+
+          if (i < 2) {
+            p5.fill(120, 255, 120, alpha * 3);
+          } else {
+            p5.fill(80, 255, 80, alpha);
+          }
+
+          p5.text(this.tail[i].symbol, this.position.x, calculatedY);
         }
-
-        if (Math.random() > _this.tail[i].changeOffset) {
-          _this.tail[i].symbol = getRandomSymbol();
-        }
-
-        p5.text(_this.tail[i].symbol, _this.position.x, calculatedY);
-      };
-
-      for (var i = this.tail.length - 1; i >= 0; i--) {
-        _loop(i);
       }
     }
   }]);
