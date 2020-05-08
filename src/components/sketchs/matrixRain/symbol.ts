@@ -36,7 +36,7 @@ class Symbol {
   initSymbol(p5: p5, positionX: number) {
     this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
     this.shadeOffset = getRandomNumber(255, 100);
-    this.rainSpeed = getRandomNumber(50, 20);
+    this.rainSpeed = getRandomNumber(80, 60);
   }
   update(p5: p5) {
     const changeSymbol = Math.random() > 0.99;
