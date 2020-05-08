@@ -43,7 +43,7 @@ class Symbol {
     this.position = p5.createVector(positionX, p5.height - Y_OFFSET - 20);
     this.shadeOffset = getRandomNumber(255, 100);
     this.rainSpeed = isMobile
-      ? getRandomNumber(120, 80)
+      ? getRandomNumber(80, 50)
       : getRandomNumber(50, 20);
   }
   update(p5: p5) {
@@ -63,8 +63,8 @@ class Symbol {
       }
       if (this.tail[i].shouldGlow) {
         p5.strokeWeight(2);
-        p5.stroke(255, 80);
-        p5.fill(255, 80);
+        p5.stroke(255, 100);
+        p5.fill(255, 100);
         this.tail[i].shouldGlow = false;
       } else {
         p5.strokeWeight(0.2);

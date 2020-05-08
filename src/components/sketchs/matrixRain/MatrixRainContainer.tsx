@@ -11,6 +11,7 @@ const MatrixRainContainer: React.FC = ({}) => {
     );
     p5.strokeWeight(2);
     p5.textSize(20);
+    //p5.frameRate(100);
     const mobileOffset = window.innerWidth < 500 ? 0 : 20;
     for (let i = 0; i < window.innerWidth / 31; i++) {
       symbols[i] = new Symbol(
