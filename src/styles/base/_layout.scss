@@ -48,8 +48,10 @@ header {
   &__container {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     padding-left: 3rem;
+    z-index: 999;
+    background-color: transparent;
   }
 }
 @media (max-width: 600px) {

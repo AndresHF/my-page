@@ -3,15 +3,13 @@ import ParticlesControlPanel from "../sketchs/particles/ParticlesControlPanel";
 
 type HeaderProps = {
   route: string;
+  style?: React.CSSProperties;
 };
 
-const Header: React.FC<HeaderProps> = ({ route, children }) => {
-
+const Header: React.FC<HeaderProps> = ({ route, style, children }) => {
   return (
-    <header>
-      {children && children || (
-        <div>Default Header</div>
-      )}
+    <header style={style}>
+      {(children && children) || <div>Default Header</div>}
     </header>
   );
 };

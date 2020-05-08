@@ -9,22 +9,31 @@ type LayoutProps = {
   background?: ReactNodeLike;
   header?: ReactNodeLike;
   footer?: ReactNodeLike;
-  disableHeader?: boolean;  
+  disableHeader?: boolean;
 };
 
-const Layout: React.FC<LayoutProps> = ({ title, background, header, disableHeader, children }) => {
+const Layout: React.FC<LayoutProps> = ({
+  title,
+  background,
+  header,
+  disableHeader,
+  children,
+}) => {
   return (
     <ParticlesProvider>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href={`${process.env.BACKEND_URL}/icons/codeNinja.ico`} />
+        <link
+          rel="icon"
+          href={`${process.env.BACKEND_URL}/icons/codeNinja.ico`}
+        />
       </Head>
-      {!disableHeader &&  header ? (
-        <Header route="home">
+      {!disableHeader && header ? (
+        <Header route="home" style={{ backgroundColor: "transparent" }}>
           {header}
         </Header>
       ) : (
-      <Header route="home" />
+        <Header route="home" />
       )}
       <main>
         {background}
