@@ -9,12 +9,14 @@ const MatrixRainContainer: React.FC = ({}) => {
     p5.createCanvas(window.innerWidth, window.innerHeight + 50).parent(
       canvasParentRef
     );
-    p5.strokeWeight(2);
     p5.textSize(20);
-    //p5.frameRate(100);
     const mobileOffset = window.innerWidth < 500 ? 0 : 20;
     for (let i = 0; i < window.innerWidth / 31; i++) {
-      symbols[i] = new Symbol(p5, mobileOffset + i * X_OFFSET);
+      symbols[i] = new Symbol(
+        p5,
+        mobileOffset === 0,
+        mobileOffset + i * X_OFFSET
+      );
     }
   };
 
@@ -23,7 +25,6 @@ const MatrixRainContainer: React.FC = ({}) => {
     p5.background(0, 0, 0);
     symbols.forEach((s) => {
       s.update(p5);
-      s.draw(p5);
     });
   };
 
