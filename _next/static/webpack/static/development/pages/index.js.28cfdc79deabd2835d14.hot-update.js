@@ -32,13 +32,11 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
 
   var setup = function setup(p5, canvasParentRef) {
     p5.createCanvas(window.innerWidth, window.innerHeight + 50).parent(canvasParentRef);
-    p5.strokeWeight(2);
-    p5.textSize(20); //p5.frameRate(100);
-
+    p5.textSize(20);
     var mobileOffset = window.innerWidth < 500 ? 0 : 20;
 
     for (var i = 0; i < window.innerWidth / 31; i++) {
-      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset + i * X_OFFSET);
+      symbols[i] = new _symbol__WEBPACK_IMPORTED_MODULE_3__["default"](p5, mobileOffset === 0, mobileOffset + i * X_OFFSET);
     }
   };
 
@@ -47,7 +45,6 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     p5.background(0, 0, 0);
     symbols.forEach(function (s) {
       s.update(p5);
-      s.draw(p5);
     });
   };
 
@@ -60,7 +57,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 5
     }
   }, __jsx(Sketch, {
@@ -69,7 +66,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35,
+      lineNumber: 36,
       columnNumber: 7
     }
   }), ";");
@@ -80,4 +77,4 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
 /***/ })
 
 })
-//# sourceMappingURL=index.js.b02453f9efc26fa4ab5f.hot-update.js.map
+//# sourceMappingURL=index.js.28cfdc79deabd2835d14.hot-update.js.map
