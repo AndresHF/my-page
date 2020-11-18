@@ -257,6 +257,66 @@ function _objectDestructuringEmpty(obj) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutProperties; });
+/* harmony import */ var _objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = Object(_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(source, excluded);
+  var key, i;
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutPropertiesLoose; });
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
@@ -10027,7 +10087,7 @@ var Home = function Home(_ref) {
       loading = _useState[0],
       setLoading = _useState[1];
 
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("MATRIX"),
+  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("PARTICLES"),
       backgroundState = _useState2[0],
       setBackgroundState = _useState2[1];
 
@@ -10550,7 +10610,7 @@ var _this = undefined,
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-var SKETCHES = ["MATRIX", "PARTICLES"];
+var SKETCHES = ["PARTICLES", "MATRIX"];
 
 var SketchPicker = function SketchPicker(_ref) {
   var _onChange = _ref.onChange;
@@ -10633,7 +10693,7 @@ var MatrixRainContainer = function MatrixRainContainer(_ref) {
 
   var draw = function draw(p5) {
     p5.clear();
-    p5.background(0, 0, 0);
+    p5.background(0, 0, 0, 0);
     symbols.forEach(function (s) {
       s.update(p5);
     });
@@ -10904,6 +10964,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _UI_hooks_useParticles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../UI/hooks/useParticles */ "./src/components/UI/hooks/useParticles.tsx");
 /* harmony import */ var _hooks_useResponsive__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../hooks/useResponsive */ "./src/hooks/useResponsive.ts");
+/* harmony import */ var _typography_Text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../typography/Text */ "./src/components/typography/Text.tsx");
 
 
 var _this = undefined,
@@ -10914,8 +10975,15 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+
+
 var getMaxAmount = function getMaxAmount(responsiveBreakpoint) {
   return responsiveBreakpoint && 20 || 80;
+};
+
+var textStyles = {
+  cursor: "pointer",
+  marginRight: "2rem"
 };
 
 var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
@@ -10931,15 +10999,22 @@ var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
       mdAndDown = _useResponsive.mdAndDown;
 
   var maxAmount = getMaxAmount(mdAndDown);
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])("6"),
+      val = _useState[0],
+      setVal = _useState[1];
+
   return __jsx("div", {
     className: "controlPanel",
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 24,
       columnNumber: 5
     }
-  }, __jsx("button", {
+  }, __jsx(_typography_Text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: textStyles,
+    bold: true,
     onClick: function onClick() {
       return dispatch({
         type: "SET_COLLIDER",
@@ -10949,10 +11024,12 @@ var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 25,
       columnNumber: 7
     }
-  }, "".concat(collider ? "Remove " : "Use", " collider")), __jsx("button", {
+  }, "".concat(collider ? "Remove " : "Use", " collider")), __jsx(_typography_Text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: textStyles,
+    bold: true,
     onClick: function onClick() {
       return dispatch({
         type: "SET_COLLISION",
@@ -10962,10 +11039,12 @@ var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22,
+      lineNumber: 32,
       columnNumber: 7
     }
-  }, "".concat(collision ? "Disable " : "Enable", " collision")), __jsx("button", {
+  }, "".concat(collision ? "Disable " : "Enable", " collision")), __jsx(_typography_Text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: textStyles,
+    bold: true,
     onClick: function onClick() {
       return dispatch({
         type: "SET_PARTICLES_AMOUNT",
@@ -10975,10 +11054,12 @@ var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27,
+      lineNumber: 39,
       columnNumber: 7
     }
-  }, "Remove particles"), __jsx("button", {
+  }, "Remove particles"), __jsx(_typography_Text__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: textStyles,
+    bold: true,
     onClick: function onClick() {
       return dispatch({
         type: "SET_PARTICLES_AMOUNT",
@@ -10988,28 +11069,33 @@ var ParticlesControlPanel = function ParticlesControlPanel(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32,
+      lineNumber: 46,
       columnNumber: 7
     }
   }, "Reset"), __jsx("input", {
     type: "number",
     max: 100,
-    placeholder: "N. particles (".concat(maxAmount, ")"),
-    value: particlesAmount,
+    placeholder: "max ".concat(maxAmount),
+    value: val,
     onChange: function onChange(e) {
-      var val = parseInt(e.target.value);
+      e.preventDefault();
+      var val = e.target.value;
+      setVal(val);
+      var intVal = parseInt(val);
+      var maxedValue = intVal > maxAmount ? maxAmount : intVal;
 
-      if (!isNaN(val)) {
+      if (!isNaN(maxedValue)) {
         dispatch({
           type: "SET_PARTICLES_AMOUNT",
-          value: val > maxAmount ? maxAmount : val
+          value: maxedValue
         });
+        setVal("".concat(maxedValue));
       }
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37,
+      lineNumber: 53,
       columnNumber: 7
     }
   }));
@@ -11293,6 +11379,60 @@ var getParticles = function getParticles(particlesAmount, radius, p5, offset) {
   return particles;
 };
 var colors = ["red", "green", "blue", "purple", "orange", "goldenrod", "limegreen", "teal", "pink", "brown", "indigo", "cyan", "crismon", "darkred", "darkorange", "gold", "darkgreen", "paleturquoise", "darkcyan", "mediumblue", "mediumorchid", "lightslategray", "sienna"];
+
+/***/ }),
+
+/***/ "./src/components/typography/Text.tsx":
+/*!********************************************!*\
+  !*** ./src/components/typography/Text.tsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var _this = undefined,
+    _jsxFileName = "C:\\Users\\andre\\projects\\my-page\\src\\components\\typography\\Text.tsx";
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+var Text = function Text(_ref) {
+  var bold = _ref.bold,
+      bolder = _ref.bolder,
+      style = _ref.style,
+      className = _ref.className,
+      children = _ref.children,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, ["bold", "bolder", "style", "className", "children"]);
+
+  var aditionalClassname = bold && "__bold" || bolder && "__bolder" || "";
+  return __jsx("div", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    className: "paragraph".concat(aditionalClassname, " ").concat(className),
+    style: _objectSpread({}, style)
+  }, props, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18,
+      columnNumber: 9
+    }
+  }), children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Text);
 
 /***/ }),
 
