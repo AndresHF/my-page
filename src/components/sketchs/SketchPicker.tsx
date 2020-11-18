@@ -5,7 +5,7 @@ type SketchPickerProps = {
     onChange: Function;
 }
 
-const SKETCHES = ["MATRIX", "PARTICLES"] as Array<BACKGROUND_STATE>;
+const SKETCHES = ["PARTICLES", "MATRIX"] as Array<BACKGROUND_STATE>;
 
 const SketchPicker: React.FC<SketchPickerProps> = ({ onChange }) => {
     return (
@@ -15,7 +15,7 @@ const SketchPicker: React.FC<SketchPickerProps> = ({ onChange }) => {
                 className="sketch__picker"
             >
                 {SKETCHES.map(sketch => (
-                    <option 
+                    <option
                         key={sketch}
                         value={sketch}
                     >

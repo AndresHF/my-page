@@ -1,20 +1,24 @@
 @mixin commonStyles {
   @extend .paragraph-m;
-  padding: 0.1rem;
-  border-radius: 4px;
-  min-width: 15rem;
+  padding: 0.1rem 1rem;
+  border-radius: 80px;
   min-height: 3rem;
-  border: 1px solid $primary-blue;
-  background-color: $primary-blue-light;
-  color: $primary-blue;
+  border: 2px solid $color-primary-orange;
+  color: $color-primary-orange;
+
+  $color-primary-orange: #b97318;
+  $color-primary-orange-lighter: #e09634;
+  font-weight: bold;
   cursor: pointer;
+
   &:focus {
     outline: 0;
   }
+
   transition: all 0.5s ease;
+
   &:hover {
-    background-color: $primary-blue-lighter;
-    color: $primary-dark;
+    border: 2px solid $color-primary-orange-lighter;
   }
 }
 
@@ -26,5 +30,33 @@ select {
 input {
   @include commonStyles;
   padding-left: 2rem;
-  width: 10rem;
+  width: 6rem !important;
+
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color-primary-orange;
+    opacity: 1;
+    /* Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $color-primary-orange;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $color-primary-orange;
+  }
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

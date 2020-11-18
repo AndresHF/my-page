@@ -27,10 +27,10 @@ const switchBackground = (state: BACKGROUND_STATE) => {
   }
 };
 
-const Home: React.FC<HomeProps> = ({}) => {
+const Home: React.FC<HomeProps> = ({ }) => {
   const [loading, setLoading] = useState(true);
   const [backgroundState, setBackgroundState] = useState(
-    "MATRIX" as BACKGROUND_STATE
+    "PARTICLES" as BACKGROUND_STATE
   );
   useEffect(() => {
     setLoading(false);

@@ -5,32 +5,94 @@
 @mixin small {
   font-size: 1.4rem;
 }
+
 @mixin medium {
   font-size: 1.6rem;
 }
+
 @mixin large {
   font-size: 2rem;
 }
+
 @mixin extraLarge {
   font-size: 2.4rem;
 }
 
 .paragraph {
   @include font;
+
   &-s {
     @extend .paragraph;
     @include small;
   }
+
   &-m {
     @extend .paragraph;
     @include medium;
   }
+
   &-l {
     @extend .paragraph;
     @include large;
   }
+
   &-xl {
     @extend .paragraph;
     @include extraLarge;
   }
+}
+
+.paragraph {
+  font-family: Roboto;
+  font-size: 1.6rem;
+  color: $color-primary-orange;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $color-primary-orange-lighter;
+  }
+
+  &__bold {
+    @extend .paragraph;
+    font-weight: 600 !important;
+  }
+
+  &__bolder {
+    @extend .paragraph;
+    font-family: Roboto-Bold;
+  }
+}
+
+.sans {
+  font-family: Sans;
+
+  &--italic {
+    font-family: Sans-Italic;
+  }
+
+  &--bold {
+    @extend .sans;
+    font-weight: bold !important;
+  }
+
+  &--bolder {
+    font-family: Sans-Bold;
+  }
+}
+
+.title {
+  font-size: 4.4rem;
+  color: $color-text-default;
+  @extend .sans--bold;
+}
+
+.subTitle {
+  font-size: 3.2rem;
+  color: $color-text-default;
+  @extend .sans;
+}
+
+.textCenter {
+  text-align: center;
 }

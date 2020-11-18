@@ -1,5 +1,7 @@
 import { useParticles } from "../../UI/hooks/useParticles";
 import { useResponsive } from "../../../hooks/useResponsive";
+import Text from "../../typography/Text";
+import { useState } from "react";
 
 type ParticlesControlPanelProps = {};
 
@@ -7,45 +9,64 @@ const getMaxAmount = (responsiveBreakpoint: boolean) => {
   return (responsiveBreakpoint && 20) || 80;
 };
 
-const ParticlesControlPanel: React.FC<ParticlesControlPanelProps> = ({}) => {
+const textStyles = {
+  cursor: "pointer",
+  marginRight: "2rem",
+} as React.CSSProperties;
+
+const ParticlesControlPanel: React.FC<ParticlesControlPanelProps> = ({ }) => {
   const { dispatch, collision, collider, particlesAmount } = useParticles();
   const { mdAndDown } = useResponsive();
   const maxAmount = getMaxAmount(mdAndDown);
+  const [val, setVal] = useState("6");
 
   return (
     <div className="controlPanel">
-      <button
+      <Text
+        style={textStyles}
+        bold
         onClick={() => dispatch({ type: "SET_COLLIDER", value: !collider })}
       >
         {`${collider ? "Remove " : "Use"} collider`}
-      </button>
-      <button
+      </Text>
+      <Text
+        style={textStyles}
+        bold
         onClick={() => dispatch({ type: "SET_COLLISION", value: !collision })}
       >
         {`${collision ? "Disable " : "Enable"} collision`}
-      </button>
-      <button
+      </Text>
+      <Text
+        style={textStyles}
+        bold
         onClick={() => dispatch({ type: "SET_PARTICLES_AMOUNT", value: 0 })}
       >
         Remove particles
-      </button>
-      <button
+      </Text>
+      <Text
+        style={textStyles}
+        bold
         onClick={() => dispatch({ type: "SET_PARTICLES_AMOUNT", value: 6 })}
       >
         Reset
-      </button>
+      </Text>
       <input
         type="number"
         max={100}
-        placeholder={`N. particles (${maxAmount})`}
-        value={particlesAmount}
+        placeholder={`max ${maxAmount}`}
+        value={val}
         onChange={(e) => {
-          const val = parseInt(e.target.value) as number;
-          if (!isNaN(val)) {
+          e.preventDefault();
+          const val = e.target.value;
+          setVal(val);
+          const intVal = parseInt(val);
+          const maxedValue = intVal > maxAmount ? maxAmount : intVal;
+          if (!isNaN(maxedValue)) {
             dispatch({
               type: "SET_PARTICLES_AMOUNT",
-              value: val > maxAmount ? maxAmount : val,
+              value: maxedValue,
             });
+            setVal(`${maxedValue}`);
           }
         }}
       />

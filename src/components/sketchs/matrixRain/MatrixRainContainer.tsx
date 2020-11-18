@@ -3,7 +3,7 @@ import Symbol from "./symbol";
 
 const X_OFFSET = 30;
 
-const MatrixRainContainer: React.FC = ({}) => {
+const MatrixRainContainer: React.FC = ({ }) => {
   let symbols = [] as Array<Symbol>;
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(window.innerWidth, window.innerHeight + 50).parent(
@@ -22,7 +22,7 @@ const MatrixRainContainer: React.FC = ({}) => {
 
   const draw = (p5) => {
     p5.clear();
-    p5.background(0, 0, 0);
+    p5.background(0, 0, 0, 0);
     symbols.forEach((s) => {
       s.update(p5);
     });
