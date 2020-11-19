@@ -146,11 +146,12 @@ header {
   top: -1rem;
   left: 0; }
 
-.sketch__picker--container {
-  display: flex;
-  justify-content: flex-end;
-  min-width: 30rem;
+.sketch__picker {
   background-color: transparent; }
+  .sketch__picker--container {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 30rem; }
 
 .controlPanel {
   display: flex;
