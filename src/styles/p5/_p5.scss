@@ -11,11 +11,13 @@
   }
 
   &__picker {
+    background-color: transparent;
+
     &--container {
       display: flex;
       justify-content: flex-end;
       min-width: 30rem;
-      background-color: transparent;
+
     }
   }
 }
